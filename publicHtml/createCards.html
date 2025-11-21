@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: rgb(247, 247, 247);
+            font-family: sans-serif;
+            width: 80%;
+            margin: auto;
+        }
+
+        #createCardsDiv {
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        .cardSide {
+            display: inline-block;
+            width: 47.5%;
+        }
+
+        .card {
+            background-color: white;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0px 0px 8px #d9dde8;
+        }
+
+        .inputArea:focus {
+            background-color: white;
+        }
+
+        .inputArea {
+            padding: 8px;
+            border-radius: 10px;
+            border: 0px solid gray;
+            width: 98.5%;
+            background-color: rgb(245, 245, 245);
+        }
+
+        #setName {
+            background-color: white;
+            box-shadow: 0px 0px 8px #d9dde8;
+            margin-bottom: 15px;
+        }
+
+        .cardSide .inputArea {
+            width: 95%;
+            border-radius: 5px;
+        }
+
+        .saveInactive {
+            background-color: gray;
+            color: white
+        }
+
+        .saveInactive:hover {
+            background-color: gray;
+        }
+
+        button,
+        .saveActive {
+            background-color: pink;
+            border: 0;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        button:hover,
+        .saveActive:hover {
+            background-color: rgb(253, 184, 196);
+        }
+
+        #saveCards {
+            padding: 5px 50px;
+            vertical-align: middle;
+        }
+
+        .removeBtn {
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .removeBtn:hover {
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        #addCard {
+            font-weight: bold;
+            font-size: 24px;
+            border-radius: 50%;
+            color: white;
+            padding: 10px 15px;
+            width: 48px
+        }
+    </style>
+    <script>
+        count = 0;
+
+        function addCard() {
+            // Create div wrapper element
+            let div = document.createElement('div')
+            div.setAttribute('id', 'div' + count)
+            div.setAttribute('class', 'card')
+
+            // Create front div element
+            let frontDiv = document.createElement('div')
+            frontDiv.setAttribute('id', 'frontDiv' + count)
+            frontDiv.setAttribute('class', 'cardSide')
+
+            // Create front input
+            let frontInput = document.createElement('textarea')
+            frontInput.setAttribute('id', 'frontInput' + count)
+            frontInput.setAttribute('class', 'inputArea')
+            frontInput.setAttribute('name', 'frontInput' + count)
+            frontInput.setAttribute('type', 'text')
+            frontInput.setAttribute('placeholder', 'Front')
+            frontInput.setAttribute('oninput', 'setSaveBtn(true)')
+
+            // Append front elements to div
+            frontDiv.appendChild(frontInput)
+
+            // Create back div element
+            let backDiv = document.createElement('div')
+            backDiv.setAttribute('id', 'backDiv' + count)
+            backDiv.setAttribute('class', 'cardSide')
+
+            // Create back input
+            let backInput = document.createElement('textarea')
+            backInput.setAttribute('id', 'backInput' + count)
+            backInput.setAttribute('class', 'inputArea')
+            backInput.setAttribute('name', 'backInput' + count)
+            backInput.setAttribute('type', 'text')
+            backInput.setAttribute('placeholder', 'Back')
+            backInput.setAttribute('oninput', 'setSaveBtn(true)')
+
+            // Append back elements to div
+            backDiv.appendChild(backInput)
+
+            // Create remove button
+            let removeBtn = document.createElement('button')
+            removeBtn.innerHTML = '<img src="imgs/trash.png" alt="Remove" class="trash-icon" width="40">'
+            removeBtn.setAttribute('class', 'removeBtn')
+            removeBtn.setAttribute('onclick', 'removeCard("div' + count + '")')
+
+            // Append all elements to div
+            div.appendChild(frontDiv)
+            div.appendChild(backDiv)
+            div.appendChild(removeBtn)
+            let wrapper = document.getElementById('createCardsDiv')
+            wrapper.appendChild(div)
+
+            // Increase row id count for use with remove button
+            count += 1
+        }
+
+        // Remove a row based on its id
+        function removeCard(id) {
+            let numCards = document.getElementsByClassName('card')
+            if (numCards.length > 1) {
+                document.getElementById(id).remove()
+                setSaveBtn(true)
+            }
+        }
+
+        function setSaveBtn(shouldSave) {
+            let btn = document.getElementById('saveCards')
+            if (shouldSave) {
+                btn.classList.remove('saveInactive');
+                btn.classList.add('saveActive');
+                btn.innerHTML = 'Save'
+                btn.disabled = false;
+            } else {
+                btn.classList.remove('saveActive');
+                btn.classList.add('saveInactive');
+                btn.innerHTML = 'Saved'
+                btn.disabled = true;
+            }
+        }
+
+        function saveCards() {
+            setSaveBtn(false)
+        }
+    </script>
+</head>
+
+<body onload="addCard()">
+    <header>
+        <img src="imgs/logo.png" width="250">
+    </header>
+    <h1>Create Cards
+        <button id="saveCards" class="saveInactive" onclick="saveCards()">Saved</button>
+    </h1>
+    <input type="text" class="inputArea" id="setName" name="setName" placeholder="Title" oninput="setSaveBtn(true)">
+
+    <div id="createCardsDiv"></div>
+    <button id="addCard" onclick="addCard()">+</button>
+</body>
+
+</html>
