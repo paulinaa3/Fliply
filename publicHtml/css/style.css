@@ -1,0 +1,72 @@
+
+/* consistent across all pages */
+body{
+    background-color:rgb(247, 247, 247);
+    color:rgb(62, 62, 62);
+    font-family: sans-serif;
+}
+img{
+    left:0;
+    top:0;
+    width:70px;
+}
+
+
+
+/* authpage css */
+.authPage #authBox{
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width:350px;
+    padding:40px;
+    border-radius: 12px;
+    border: 1px solid rgb(224, 222, 222);
+}
+.authPage h2{
+    text-align: center;
+}
+.authPage input{
+    margin-bottom:10px;
+    width:100%;
+    padding:12px;
+    border-radius: 5px;
+    border: 0.5px solid rgb(191, 191, 191);
+}
+.authPage button{
+    color:rgb(62, 62, 62);
+    margin-bottom:5px;
+    text-align: center;
+    width:105%;
+    padding:12px;
+    background-color: pink;
+    border-radius: 20px;
+    border:0px;
+    font-family: sans-serif;
+}
+.authPage button:hover {
+    cursor:pointer;
+    background-color: rgb(253, 184, 196);
+}
+
+#loginPage #registerBox{
+    text-align: center;
+}
+#loginPage a {
+    text-decoration: none;
+}
+
+.authPage .passwordContainer{
+    position: relative;
+}
+
+.authPage .passwordContainer .fa-eye {
+    position: absolute;
+    right: 0;
+    top: 40%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: rgb(180, 180, 180);
+}
