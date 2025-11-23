@@ -3,11 +3,25 @@
 
 <head>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: rgb(247, 247, 247);
             font-family: sans-serif;
+
+        }
+
+        #container {
             width: 80%;
             margin: auto;
+        }
+
+        #logo {
+            left: 0;
+            top: 0;
+            width: 70px;
         }
 
         #createCardsDiv {
@@ -17,7 +31,8 @@
 
         .cardSide {
             display: inline-block;
-            width: 47.5%;
+            width: 48.75%;
+            vertical-align: top;
         }
 
         .card {
@@ -26,6 +41,26 @@
             border-radius: 10px;
             margin-bottom: 15px;
             box-shadow: 0px 0px 8px #d9dde8;
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .removeDiv {
+            vertical-align: top;
+        }
+
+        .removeBtn {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .removeBtn:hover {
+            background-color: transparent;
+            cursor: pointer;
         }
 
         .inputArea:focus {
@@ -36,19 +71,21 @@
             padding: 8px;
             border-radius: 10px;
             border: 0px solid gray;
-            width: 98.5%;
             background-color: rgb(245, 245, 245);
+            width: 100%;
         }
 
         #setName {
             background-color: white;
             box-shadow: 0px 0px 8px #d9dde8;
             margin-bottom: 15px;
+            width: 100%;
         }
 
         .cardSide .inputArea {
-            width: 95%;
             border-radius: 5px;
+            resize: none;
+            box-sizing: border-box;
         }
 
         .saveInactive {
@@ -68,24 +105,9 @@
             border-radius: 5px;
         }
 
-        button:hover,
-        .saveActive:hover {
-            background-color: rgb(253, 184, 196);
-        }
-
         #saveCards {
             padding: 5px 50px;
             vertical-align: middle;
-        }
-
-        .removeBtn {
-            background-color: transparent;
-            padding: 0;
-        }
-
-        .removeBtn:hover {
-            background-color: transparent;
-            cursor: pointer;
         }
 
         #addCard {
@@ -96,55 +118,109 @@
             padding: 10px 15px;
             width: 48px
         }
+
+        @media (max-width: 600px) {
+            .card {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .cardSide {
+                width: 100%;
+            }
+        }
     </style>
+</head>
+
+<body>
+    <header>
+        <img src="imgs/logo.png" id="logo">
+    </header>
+    <div id="container">
+        <h1>Create Cards
+            <button id="saveCards" class="saveInactive" onclick="saveCards()">Saved</button>
+        </h1>
+        <input type="text" class="inputArea" id="setName" name="setName" placeholder="Title" oninput="setSaveBtn(true)">
+
+        <div id="createCardsDiv"></div>
+        <button id="addCard" onclick="addCard()">+</button>
+    </div>
     <script>
+        // for testing load cards
+        let sample = {
+            "name": "DNS",
+            "cards": [
+                {
+                    "cardId": 0,
+                    "front": "DNS",
+                    "back": "Domain Name System"
+                },
+                {
+                    "cardId": 1,
+                    "front": "gateway",
+                    "back": "router connecting networks"
+                }
+            ]
+        }
+
+        // used in ids for created elements
         count = 0;
 
+        // adds elements for creating a card, including a button to remove card
         function addCard() {
             // Create div wrapper element
             let div = document.createElement('div')
             div.setAttribute('id', 'div' + count)
             div.setAttribute('class', 'card')
 
-            // Create front div element
+            // Create front div element (id format 'frontDiv0')
             let frontDiv = document.createElement('div')
             frontDiv.setAttribute('id', 'frontDiv' + count)
             frontDiv.setAttribute('class', 'cardSide')
 
-            // Create front input
+            // Create front input (id format 'frontInput0')
             let frontInput = document.createElement('textarea')
             frontInput.setAttribute('id', 'frontInput' + count)
-            frontInput.setAttribute('class', 'inputArea')
+            frontInput.setAttribute('class', 'cardFront inputArea')
             frontInput.setAttribute('name', 'frontInput' + count)
             frontInput.setAttribute('type', 'text')
             frontInput.setAttribute('placeholder', 'Front')
-            frontInput.setAttribute('oninput', 'setSaveBtn(true)')
+            frontInput.setAttribute('rows', 2)
+            frontInput.setAttribute("oninput", "autoGrow(this); setSaveBtn(true)")
 
             // Append front elements to div
             frontDiv.appendChild(frontInput)
 
-            // Create back div element
+            // Create back div element (id format 'backDiv0')
             let backDiv = document.createElement('div')
             backDiv.setAttribute('id', 'backDiv' + count)
             backDiv.setAttribute('class', 'cardSide')
 
-            // Create back input
+            // Create back input (id format 'backInput0')
             let backInput = document.createElement('textarea')
             backInput.setAttribute('id', 'backInput' + count)
-            backInput.setAttribute('class', 'inputArea')
+            backInput.setAttribute('class', 'cardBack inputArea')
             backInput.setAttribute('name', 'backInput' + count)
             backInput.setAttribute('type', 'text')
             backInput.setAttribute('placeholder', 'Back')
-            backInput.setAttribute('oninput', 'setSaveBtn(true)')
+            backInput.setAttribute("oninput", "autoGrow(this); setSaveBtn(true)")
 
             // Append back elements to div
             backDiv.appendChild(backInput)
 
+            // Create back div element (id format 'removeDiv0')
+            let removeDiv = document.createElement('div')
+            removeDiv.setAttribute('id', 'removeDiv' + count)
+            removeDiv.setAttribute('class', 'removeDiv')
+
             // Create remove button
             let removeBtn = document.createElement('button')
-            removeBtn.innerHTML = '<img src="imgs/trash.png" alt="Remove" class="trash-icon" width="40">'
+            removeBtn.innerHTML = '<img src="imgs/trash.png" alt="Remove" class="trash-icon" width="25">'
             removeBtn.setAttribute('class', 'removeBtn')
             removeBtn.setAttribute('onclick', 'removeCard("div' + count + '")')
+
+            // Append back elements to div
+            removeDiv.appendChild(removeBtn)
 
             // Append all elements to div
             div.appendChild(frontDiv)
@@ -166,6 +242,12 @@
             }
         }
 
+        // adjust the height of a text area based on input
+        function autoGrow(area) {
+            area.style.height = "auto"
+            area.style.height = area.scrollHeight + "px";
+        }
+
         function setSaveBtn(shouldSave) {
             let btn = document.getElementById('saveCards')
             if (shouldSave) {
@@ -183,21 +265,47 @@
 
         function saveCards() {
             setSaveBtn(false)
+            console.log(createObject())
         }
+
+        function createObject() {
+            let setName = document.getElementById('setName').value.trim()
+            let cardFronts = document.getElementsByClassName('cardFront')
+            let cardBacks = document.getElementsByClassName('cardBack')
+
+            let obj = {
+                name: setName,
+                cards: []
+            }
+
+            for (let i = 0; i < cardFronts.length; i++) {
+                obj.cards.push({
+                    cardId: i,
+                    front: cardFronts[i].value.trim(),
+                    back: cardBacks[i].value.trim()
+                });
+            }
+
+            return JSON.stringify(obj, null, '\t')
+        }
+
+        function loadCards(cardSet) {
+            document.getElementById('setName').value = cardSet.name
+            for (let i = 0; i < cardSet.cards.length; i++) {
+                const currentCard = cardSet.cards[i]
+                if (i > 0) {
+                    addCard()
+                }
+                document.getElementById('frontInput' + i).value = currentCard.front
+                document.getElementById('backInput' + i).value = currentCard.back
+            }
+        }
+
+        // TODO: Consider how and when to call these; calling onload="addCard()" might happen after loadCards()
+        // depending on how we call, so we need to test sequence and adjust
+        addCard()
+        // loadCards(sample)
     </script>
-</head>
-
-<body onload="addCard()">
-    <header>
-        <img src="imgs/logo.png" width="250">
-    </header>
-    <h1>Create Cards
-        <button id="saveCards" class="saveInactive" onclick="saveCards()">Saved</button>
-    </h1>
-    <input type="text" class="inputArea" id="setName" name="setName" placeholder="Title" oninput="setSaveBtn(true)">
-
-    <div id="createCardsDiv"></div>
-    <button id="addCard" onclick="addCard()">+</button>
 </body>
 
 </html>
