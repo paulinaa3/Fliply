@@ -64,8 +64,8 @@ function sendReq(url) {
                 }, 1200);
             }
             else {
-                //we're in login, so sends to home page
-                window.location.href = "home.html";
+                //we're in login, so sends to home page 
+                window.location.href = "library.html";
             }
         }
         else {

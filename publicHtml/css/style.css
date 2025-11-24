@@ -48,7 +48,7 @@ img{
 }
 .authPage button:hover {
     cursor:pointer;
-    background-color: rgb(253, 184, 196);
+    background-color: rgb(255, 179, 192);
 }
 
 #loginPage #registerBox{
@@ -69,4 +69,55 @@ img{
     transform: translateY(-50%);
     cursor: pointer;
     color: rgb(180, 180, 180);
+}
+
+
+
+
+/*library css */
+#libraryPage .cardBox {
+    background-color: white;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px #d9dde8;
+}
+
+#libraryPage .cardBox:hover{
+    cursor:pointer;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    
+}
+
+#libraryPage .cardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#libraryPage .buttonRow {
+    display: flex;
+    gap: 8px;
+}
+
+
+#libraryPage .cardRow p{
+    font-size:12px;
+}
+
+#libraryPage .cardRow button{
+    font-size:12px;
+    color:rgb(62, 62, 62);
+    padding:5px;
+    text-align: center;
+    background-color: pink;
+    border-radius: 20px;
+    border:0px;
+    font-family: sans-serif;
+}
+
+#libraryPage .cardRow button:hover{
+    cursor:pointer;
+    background-color: rgb(255, 179, 192);
 }
