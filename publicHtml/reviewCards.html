@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Review Cards</title>
+    <link rel="icon" type="image/png" href="imgs/icon.png?v=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(247, 247, 247);
+            font-family: sans-serif;
+            color: rgb(62, 62, 62);
+        }
+
+        #reviewContainer {
+            width: 60%;
+            margin: auto;
+            text-align: center;
+        }
+
+        #logo {
+            left: 0;
+            top: 0;
+            width: 70px;
+        }
+
+        #pageTitle {
+            text-align: left;
+        }
+
+        #cardTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            color: rgb(62, 62, 62);
+            background-color: pink;
+            border: 0;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            cursor: pointer;
+            background-color: rgb(253, 184, 196);
+        }
+
+
+        #cardDisplay {
+            width: 100%;
+            margin: 20px auto;
+            height: 450px;
+            perspective: 1000px;
+        }
+
+        /* This container is needed to position the front and back side */
+        #cardContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 1.0s;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+        }
+
+        /* Position the front and back side */
+        #cardFront,
+        #cardBack {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            font-size: 32px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* Safari */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 0px 8px #d9dde8;
+        }
+
+        #cardBack {
+            transform: rotateX(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="imgs/logo.png" id="logo">
+    </header>
+    <div id="reviewContainer">
+        <h1 id="pageTitle">Review Cards</h1>
+        <h3 id="cardTitle"><span id="setName"></span><span id="cardCount"></span></h3>
+        <!-- <div id="cardCount"></div> -->
+        <div id="cardDisplay" onclick="flipCard()">
+            <div id="cardContainer">
+                <div id="cardFront" class="cardFace" onclick="flipCard()">Hello</div>
+                <div id="cardBack" class="cardFace" onclick="flipCard()">Goodbye</div>
+            </div>
+        </div>
+        <div id="controlButtons">
+            <button id="prevCard" onclick="changeCard('prev')"><i class="fa-solid fa-angle-left"></i></i></button>
+            <button id="nextCard" onclick="changeCard('next')"><i class="fa-solid fa-angle-right"></i></button>
+        </div>
+    </div>
+    <script>
+        // for testing load cards
+        let sample = {
+            "name": "DNS",
+            "cards": [
+                {
+                    "cardId": 0,
+                    "front": "DNS",
+                    "back": "Domain Name System"
+                },
+                {
+                    "cardId": 1,
+                    "front": "gateway",
+                    "back": "router connecting networks"
+                }
+            ]
+        }
+
+        let rotation = 0;
+        function flipCard() {
+            rotation += 90
+            document.getElementById('cardContainer').style.transform = `rotateX(${rotation}deg)`
+        }
+
+        let cardNumber = 0;
+        let cards = [];
+        function loadCards(cardSet) {
+            document.getElementById('setName').innerText = cardSet.name
+            cards = cardSet.cards
+            updateDisplays()
+        }
+
+        function changeCard(direction) {
+            if (direction == 'next') {
+                cardNumber++
+                if (cardNumber >= cards.length) { cardNumber = 0 }
+
+            } else {
+                cardNumber--
+                if (cardNumber < 0) { cardNumber = cards.length - 1 }
+            }
+            cardNumber %= cards.length
+            updateDisplays()
+        }
+
+        function updateDisplays() {
+            document.getElementById('cardFront').innerText = cards[cardNumber].front
+            document.getElementById('cardBack').innerText = cards[cardNumber].back
+            document.getElementById('cardCount').innerText = (cardNumber + 1) + ' / ' + (cards.length)
+        }
+
+        loadCards(sample)
+    </script>
+</body>
+
+</html>
