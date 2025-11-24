@@ -45,11 +45,11 @@ function loadLibrary() {
         const buttonRow = document.createElement('div');
         buttonRow.className = "buttonRow";
 
-        const quizButton = document.createElement('button')
+        let quizButton = document.createElement('button')
         quizButton.innerText = "Quiz Me"
         quizButton.className = "quiz"
 
-        const editButton = document.createElement('button')
+        let editButton = document.createElement('button')
         editButton.innerText = "Edit"
         editButton.className = "edit"
 
