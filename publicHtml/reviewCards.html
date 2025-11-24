@@ -5,100 +5,14 @@
     <title>Review Cards</title>
     <link rel="icon" type="image/png" href="imgs/icon.png?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: rgb(247, 247, 247);
-            font-family: sans-serif;
-            color: rgb(62, 62, 62);
-        }
-
-        #reviewContainer {
-            width: 60%;
-            margin: auto;
-            text-align: center;
-        }
-
-        #logo {
-            left: 0;
-            top: 0;
-            width: 70px;
-        }
-
-        #pageTitle {
-            text-align: left;
-        }
-
-        #cardTitle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        button {
-            color: rgb(62, 62, 62);
-            background-color: pink;
-            border: 0;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            cursor: pointer;
-            background-color: rgb(253, 184, 196);
-        }
-
-
-        #cardDisplay {
-            width: 100%;
-            margin: 20px auto;
-            height: 450px;
-            perspective: 1000px;
-        }
-
-        /* This container is needed to position the front and back side */
-        #cardContainer {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 1.0s;
-            transform-style: preserve-3d;
-            border-radius: 10px;
-        }
-
-        /* Position the front and back side */
-        #cardFront,
-        #cardBack {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-            font-size: 32px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            /* Safari */
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 10px;
-            box-shadow: 0px 0px 8px #d9dde8;
-        }
-
-        #cardBack {
-            transform: rotateX(180deg);
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="reviewCardsPage">
     <header>
-        <img src="imgs/logo.png" id="logo">
+        <a href="library.html">
+            <img src="imgs/logo.png" id="logo">
+        </a>
     </header>
     <div id="reviewContainer">
         <h1 id="pageTitle">Review Cards</h1>

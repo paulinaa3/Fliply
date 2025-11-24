@@ -3,144 +3,16 @@
 
 <head>
     <title>Create Cards</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: rgb(247, 247, 247);
-            font-family: sans-serif;
-            color: rgb(62, 62, 62);
-        }
-
-        #container {
-            width: 80%;
-            margin: auto;
-        }
-
-        #logo {
-            left: 0;
-            top: 0;
-            width: 70px;
-        }
-
-        #createCardsDiv {
-            margin: 10px 0;
-            width: 100%;
-        }
-
-        .cardSide {
-            display: inline-block;
-            width: 48.75%;
-            vertical-align: top;
-        }
-
-        .card {
-            background-color: white;
-            padding: 40px 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0px 0px 8px #d9dde8;
-            position: relative;
-            width: 100%;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .removeDiv {
-            vertical-align: top;
-        }
-
-        .removeBtn {
-            background: none;
-            border: none;
-            padding: 0;
-        }
-
-        .removeBtn:hover {
-            background-color: transparent;
-            cursor: pointer;
-        }
-
-        .inputArea:focus {
-            background-color: white;
-        }
-
-        .inputArea {
-            padding: 8px;
-            border-radius: 10px;
-            border: 0px solid gray;
-            background-color: rgb(245, 245, 245);
-            color: rgb(62, 62, 62);
-            font-family: sans-serif;
-            width: 100%;
-        }
-
-        #setName {
-            background-color: white;
-            box-shadow: 0px 0px 8px #d9dde8;
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .cardSide .inputArea {
-            border-radius: 5px;
-            resize: none;
-            box-sizing: border-box;
-        }
-
-        .saveInactive {
-            background-color: gray;
-            color: white
-        }
-
-        .saveInactive:hover {
-            background-color: gray;
-        }
-
-        button,
-        .saveActive {
-            color: rgb(62, 62, 62);
-            background-color: pink;
-            border: 0;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        #saveCards {
-            padding: 5px 50px;
-            vertical-align: middle;
-        }
-
-        #addCard {
-            font-weight: bold;
-            font-size: 24px;
-            border-radius: 50%;
-            color: white;
-            padding: 10px 15px;
-            width: 48px
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                flex-direction: column;
-                gap: 5px;
-            }
-
-            .cardSide {
-                width: 100%;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="createCardsPage">
     <header>
-        <img src="imgs/logo.png" id="logo">
+        <a href="library.html">
+            <img src="imgs/logo.png" id="logo">
+        </a>
     </header>
-    <div id="container">
+    <div id="createCardsContainer">
         <h1>Create Cards
             <button id="saveCards" class="saveInactive" onclick="saveCards()">Saved</button>
         </h1>
@@ -219,7 +91,7 @@
 
             // Create remove button
             let removeBtn = document.createElement('button')
-            removeBtn.innerHTML = '<img src="imgs/trash.png" alt="Remove" class="trash-icon" width="25">'
+            removeBtn.innerHTML = '<img src="imgs/trash.png" alt="Remove" class="trashIcon" width="25">'
             removeBtn.setAttribute('class', 'removeBtn')
             removeBtn.setAttribute('onclick', 'removeCard("div' + count + '")')
 

@@ -1,64 +1,68 @@
-
 /* consistent across all pages */
-body{
-    background-color:rgb(247, 247, 247);
-    color:rgb(62, 62, 62);
+body {
+    background-color: rgb(247, 247, 247);
+    color: rgb(62, 62, 62);
     font-family: sans-serif;
 }
-img{
-    left:0;
-    top:0;
-    width:70px;
-}
 
+img {
+    left: 0;
+    top: 0;
+    width: 70px;
+}
 
 
 /* authpage css */
-.authPage #authBox{
+.authPage #authBox {
     background-color: white;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width:350px;
-    padding:40px;
+    width: 350px;
+    padding: 40px;
     border-radius: 12px;
     border: 1px solid rgb(224, 222, 222);
 }
-.authPage h2{
+
+.authPage h2 {
     text-align: center;
 }
-.authPage input{
-    margin-bottom:10px;
-    width:100%;
-    padding:12px;
+
+.authPage input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 12px;
     border-radius: 5px;
     border: 0.5px solid rgb(191, 191, 191);
 }
-.authPage button{
-    color:rgb(62, 62, 62);
-    margin-bottom:5px;
+
+.authPage button {
+    color: rgb(62, 62, 62);
+    margin-bottom: 5px;
     text-align: center;
-    width:105%;
-    padding:12px;
+    width: 105%;
+    padding: 12px;
     background-color: pink;
     border-radius: 20px;
-    border:0px;
+    border: 0px;
     font-family: sans-serif;
 }
+
 .authPage button:hover {
-    cursor:pointer;
+    cursor: pointer;
     background-color: rgb(253, 184, 196);
 }
 
-#loginPage #registerBox{
+#loginPage #registerBox {
     text-align: center;
 }
+
 #loginPage a {
     text-decoration: none;
 }
 
-.authPage .passwordContainer{
+.authPage .passwordContainer {
     position: relative;
 }
 
@@ -69,4 +73,201 @@ img{
     transform: translateY(-50%);
     cursor: pointer;
     color: rgb(180, 180, 180);
+}
+
+/* createCards css */
+.createCardsPage * {
+    box-sizing: border-box;
+}
+
+.createCardsPage #createCardsDiv {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.createCardsPage #createCardsContainer {
+    width: 80%;
+    margin: auto;
+}
+
+.createCardsPage .cardSide {
+    display: inline-block;
+    width: 48.75%;
+    vertical-align: top;
+}
+
+.createCardsPage .card {
+    background-color: white;
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 8px #d9dde8;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.createCardsPage .removeDiv {
+    vertical-align: top;
+}
+
+.createCardsPage .removeBtn {
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.createCardsPage .removeBtn:hover {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.createCardsPage .trashIcon {
+    width: 25px;
+}
+
+.createCardsPage .inputArea:focus {
+    background-color: white;
+}
+
+.createCardsPage .inputArea {
+    padding: 8px;
+    border-radius: 10px;
+    border: 0px solid gray;
+    background-color: rgb(245, 245, 245);
+    color: rgb(62, 62, 62);
+    font-family: sans-serif;
+    width: 100%;
+}
+
+.createCardsPage #setName {
+    background-color: white;
+    box-shadow: 0px 0px 8px #d9dde8;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.createCardsPage .cardSide .inputArea {
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.createCardsPage .saveInactive {
+    background-color: gray;
+    color: white
+}
+
+.createCardsPage .saveInactive:hover {
+    background-color: gray;
+}
+
+.createCardsPage button,
+.createCardsPage .saveActive {
+    color: rgb(62, 62, 62);
+    background-color: pink;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.createCardsPage #saveCards {
+    padding: 5px 50px;
+    vertical-align: middle;
+}
+
+.createCardsPage #addCard {
+    font-weight: bold;
+    font-size: 24px;
+    border-radius: 50%;
+    color: white;
+    padding: 10px 15px;
+    width: 48px
+}
+
+@media (max-width: 600px) {
+    .createCardsPage .card {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .createCardsPage .cardSide {
+        width: 100%;
+    }
+}
+
+/* reviewCards css */
+.reviewCardsPage * {
+    box-sizing: border-box;
+}
+
+.reviewCardsPage #reviewContainer {
+    width: 60%;
+    margin: auto;
+    text-align: center;
+}
+
+.reviewCardsPage #pageTitle {
+    text-align: left;
+}
+
+.reviewCardsPage #cardTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reviewCardsPage button {
+    color: rgb(62, 62, 62);
+    background-color: pink;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.reviewCardsPage button:hover {
+    cursor: pointer;
+    background-color: rgb(253, 184, 196);
+}
+
+.reviewCardsPage #cardDisplay {
+    width: 100%;
+    margin: 20px auto;
+    height: 450px;
+    perspective: 1000px;
+}
+
+.reviewCardsPage #cardContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.0s;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+}
+
+.reviewCardsPage #cardFront,
+.reviewCardsPage #cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    font-size: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Safari */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px #d9dde8;
+}
+
+.reviewCardsPage #cardBack {
+    transform: rotateX(180deg);
 }
