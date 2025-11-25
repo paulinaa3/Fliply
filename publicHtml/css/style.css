@@ -75,12 +75,18 @@ img{
 
 
 /*library css */
+#libraryPage h2{
+    margin-left: 4%;
+}
 #libraryPage .cardBox {
     background-color: white;
     padding: 8px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 8px #d9dde8;
+    width:90%;
+    margin: 10px auto;
+    margin-bottom:15px;
 }
 
 #libraryPage .cardBox:hover{
