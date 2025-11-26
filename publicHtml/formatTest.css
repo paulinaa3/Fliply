@@ -9,6 +9,7 @@
           background-color: rgba(211, 211, 211, 0.852);
           border: 1px solid rgb(197, 61, 84);
           font-size: 26px;
+          border-radius: 10px;
        }
 
        div.Answer {
@@ -16,5 +17,54 @@
           border: 1px solid rgb(197, 61, 84);
           margin-bottom: 15px;
           font-size: 26px;
+          border-radius: 10px;
+          
        }
+       #loadingScreen {
+                position: fixed;
+                top: 0; 
+                right: 0;
+                bottom: 0;
+                left: 0;
+                /* background-color: black; */
+                background-color: rgb(247, 247, 247);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            }
+
+            #loadingScreen .container{
+                height: 300px;
+                width: 200px;
+                background-color: rgb(247, 247, 247);
+                border: 5px solid  pink;;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #loadingScreen h4{
+                /* color: rgb(200, 107, 209); background-color: pink; */
+                color: pink;
+            }
+            .circle{
+                margin: 7px auto;
+                width: 40px;
+                height: 40px;
+                border: 5px solid darkgrey;
+                border-radius: 50%;
+                /* //border-top-color: rgb(200, 107, 209); */
+                border-top-color: pink;
+                animation: spin 1s linear infinite;
+            }
+            @keyframes spin{
+                100%{
+                    transform: rotate(360deg)
+                }
+            }
+            #quizArea {
+                display: none;
+                padding: 16px;
+            }
        
