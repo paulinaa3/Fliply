@@ -11,6 +11,15 @@ var deckName='Russian Folklore'
 
 
        async function sendRequest() {
+            //do loading and hide the quiz
+            
+            var loadingPage=document.getElementById('loadingScreen')
+            var quizArea = document.getElementById('quizArea')
+
+            loadingPage.style.display = 'flex';
+            quizArea.style.display = 'none';
+
+
            const userText = `
            Generate 10 question answer pairs in comma separated format: q1,ans1,q2,ans2,...,q10,ans10 using given flashcards
             Keep questions and answers short and only about the information given and make sure no commas inside answer
@@ -30,7 +39,7 @@ var deckName='Russian Folklore'
 
            // Create client using your API key (local only!)
            const client = new OpenAI({
-               apiKey: "YourKeyHere"
+               apiKey: "KeyHere",
 
                // You should never expose API keys, so this is necessary to paste the key into HTML like this
                // We will hide it in the back end and access it through a post call
@@ -60,7 +69,10 @@ var deckName='Russian Folklore'
 
                output= completion.choices[0].message.content;
                var result = document.getElementById("showAI")
-               result.innerText=output.split(",")
+               if (result){//for debugging check if showAI area exists
+                    result.innerText=output.split(",")
+               }
+               
 
            } catch (err) {
                output = "Error: " + err;
@@ -68,11 +80,21 @@ var deckName='Russian Folklore'
        
 
        array=output.split(',')
+        
+       //create 10 questions
+       createQuestions(10);
+
        //var divs = document.getElementsByTagName('div')
        var divs=document.getElementsByClassName("Question")
        for(var i=0;i<divs.length;i++){
           divs[i].innerText=array[i*2]
        }
+
+       //hide loading page and now show the answers
+
+        loadingPage.style.display = 'none';
+        quizArea.style.display = 'block';
+
 
        }
 
@@ -82,7 +104,8 @@ var deckName='Russian Folklore'
         }
 
         function createQuestions(n) {
-            var body = document.getElementsByTagName('body')[0]
+            //var body = document.getElementsByTagName('body')[0]
+            var body = document.getElementById('quizArea')
             var idTracker=1
             var qTracker=1
             for (var i=0;i<n;i++){
