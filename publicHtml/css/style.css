@@ -179,6 +179,16 @@ img {
     vertical-align: middle;
 }
 
+.createCardsPage #saveCards {
+    cursor: pointer;
+}
+
+.createCardsPage h1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .createCardsPage #addCard {
     font-weight: bold;
     font-size: 24px;
@@ -187,6 +197,11 @@ img {
     padding: 10px 15px;
     width: 48px
 }
+
+.createCardsPage #addCard {
+    cursor: pointer;
+}
+
 
 @media (max-width: 600px) {
     .createCardsPage .card {
@@ -217,7 +232,11 @@ img {
 .reviewCardsPage #cardTitle {
     display:flex;
     justify-content: space-between;
-    align-items: center;
+}
+
+
+.reviewCardsPage #cardCount {
+    font-size:15px;
 }
 
 
