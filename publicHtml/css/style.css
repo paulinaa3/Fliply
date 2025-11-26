@@ -75,6 +75,7 @@ img {
     color: rgb(180, 180, 180);
 }
 
+
 /* createCards css */
 .createCardsPage * {
     box-sizing: border-box;
@@ -214,36 +215,11 @@ img {
 }
 
 .reviewCardsPage #cardTitle {
-
-
-
-/*library css */
-#libraryPage h2{
-    margin-left: 4%;
-}
-#libraryPage .cardBox {
-    background-color: white;
-    padding: 8px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 8px #d9dde8;
-    width:90%;
-    margin: 10px auto;
-    margin-bottom:15px;
-}
-
-#libraryPage .cardBox:hover{
-    cursor:pointer;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
-    
-}
-
-#libraryPage .cardRow {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
 }
+
 
 .reviewCardsPage button {
     color: rgb(62, 62, 62);
@@ -263,6 +239,10 @@ img {
     margin: 20px auto;
     height: 450px;
     perspective: 1000px;
+}
+
+.reviewCardsPage #cardDisplay {
+    cursor:pointer;
 }
 
 .reviewCardsPage #cardContainer {
@@ -296,6 +276,37 @@ img {
 
 .reviewCardsPage #cardBack {
     transform: rotateX(180deg);
+}
+
+
+/*library css */
+#libraryPage h2{
+    margin-left: 4%;
+}
+#libraryPage .cardBox {
+    background-color: white;
+    padding: 8px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px #d9dde8;
+    width:90%;
+    margin: 10px auto;
+    margin-bottom:15px;
+}
+
+#libraryPage .cardBox:hover{
+    cursor:pointer;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    
+}
+
+#libraryPage .cardRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #libraryPage .buttonRow {
     display: flex;
     gap: 8px;
