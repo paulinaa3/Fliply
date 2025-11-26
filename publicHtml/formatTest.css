@@ -1,0 +1,20 @@
+       
+       #showAI{
+           margin-top: 15px;
+           padding: 10px;
+           border: 1px solid #ccc;
+           min-height: 60px;
+       }
+       div.Question {
+          background-color: rgba(211, 211, 211, 0.852);
+          border: 1px solid rgb(197, 61, 84);
+          font-size: 26px;
+       }
+
+       div.Answer {
+          background-color: rgba(211, 211, 211, 0.269);
+          border: 1px solid rgb(197, 61, 84);
+          margin-bottom: 15px;
+          font-size: 26px;
+       }
+       
