@@ -33,7 +33,7 @@ app.post('/login', async function(req, res) {
     req.on('end', async function() {
         try {
             const query = JSON.parse(body);
-            const email = query.email;
+            const email = query.email.toLowerCase();
             const password = query.password;
 
             //tries to find user in mongo database
@@ -63,7 +63,7 @@ app.post('/register', async function(req,res) {
     req.on('end', async function() {
         try {
             const query = JSON.parse(body);
-            const email = query.email;
+            const email = query.email.toLowerCase();
             const password = query.password;
 
             //if user exists, exit
