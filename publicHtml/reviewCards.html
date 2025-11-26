@@ -20,8 +20,8 @@
         <!-- <div id="cardCount"></div> -->
         <div id="cardDisplay" onclick="flipCard()">
             <div id="cardContainer">
-                <div id="cardFront" class="cardFace" onclick="flipCard()">Hello</div>
-                <div id="cardBack" class="cardFace" onclick="flipCard()">Goodbye</div>
+                <div id="cardFront" class="cardFace">Hello</div>
+                <div id="cardBack" class="cardFace">Goodbye</div>
             </div>
         </div>
         <div id="controlButtons">
@@ -49,7 +49,7 @@
 
         let rotation = 0;
         function flipCard() {
-            rotation += 90
+            rotation += 180
             document.getElementById('cardContainer').style.transform = `rotateX(${rotation}deg)`
         }
 
@@ -65,12 +65,22 @@
             if (direction == 'next') {
                 cardNumber++
                 if (cardNumber >= cards.length) { cardNumber = 0 }
-
             } else {
                 cardNumber--
                 if (cardNumber < 0) { cardNumber = cards.length - 1 }
             }
             cardNumber %= cards.length
+
+            // immediately flip card to front before switching
+            if (rotation % 360 != 0) {
+                let cardContainer = document.getElementById('cardContainer')
+                cardContainer.style.transition = 'none'
+                cardContainer.offsetHeight;
+                flipCard()
+                setTimeout(() => {
+                    cardContainer.style.transition = 'transform 1.0s';
+                }, 0);
+            }
             updateDisplays()
         }
 

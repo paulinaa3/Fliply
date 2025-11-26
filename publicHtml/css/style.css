@@ -170,7 +170,7 @@ img {
     background-color: pink;
     border: 0;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 
 .createCardsPage #saveCards {
@@ -224,7 +224,7 @@ img {
     background-color: pink;
     border: 0;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 
 .reviewCardsPage button:hover {
