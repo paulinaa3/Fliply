@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" href="imgs/icon.png?v=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Bubblegum+Sans' rel='stylesheet'>
+    <style>
+        body{
+            margin:20px;
+            color: rgb(62, 62, 62);
+        }
+        h2{
+            margin-left: 4%;
+        }
+        button {
+            color: rgb(62, 62, 62);
+            background-color: pink;
+            border: 0px;
+            font-family: sans-serif;
+            margin-top: 15px;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            cursor:pointer;
+            background-color: rgb(255, 179, 192);
+        }
+        .textBox{
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0px 0px 8px #d9dde8;
+            width:90%;
+            margin: 10px auto;
+            margin-bottom:20px;
+        }
+        .textBox:hover {
+            transform: translateY(-2px);
+        }
+        span{
+            font-family: sans-serif;
+            font-size:20px;
+            color: rgb(62, 62, 62);
+        }
+        .question{
+            color:rgb(255, 179, 192);
+            font-family: 'Bubble Body', sans-serif;
+            font-size:25px;
+        }
+        .answer {
+            display: block;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            margin-top: 0;
+            pointer-events: none;
+        }
+        .textBox.open .answer {
+            max-height: 800px;  
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <a href="library.html">
+        <img src="imgs/logo.png" id="logo">
+    </a>
+    <h2>
+        Practice Test
+    </h2>
+    <div class="textBox">
+        <div class="question">Q1: 
+            <span>
+                Who is the forest spirit with a hut on chicken legs?
+            </span>
+        </div>
+        <div class="answer" id="0">
+            He's a chicken!
+        </div>
+        <button id="btn0" onclick="showOrHide('0', 'btn0')">Reveal</button>
+    </div>
+    <div class="textBox">
+        <div class="question">Q2:
+            <span>
+                Who hides his soul inside nested objects?
+            </span>
+        </div>
+        <div class="answer" id="1">
+            According to all known laws of aviation, there is no way a bee should be able to fly.
+            Its wings are too small to get its fat little body off the ground.
+            The bee, of course, flies anyway because bees don't care what humans think is impossible.
+            Yellow, black. Yellow, black. Yellow, black. Yellow, black.
+            Ooh, black and yellow! maybe the honey field just isn't right for me.
+            You were thinking of what, making balloon animals?
+            That's a bad job for a guy with a stinger.
+            Janet, your son's not sure he wants to go into honey!
+            Barry, you are so funny sometimes.
+        </div>
+        <button id="btn1" onclick="showOrHide('1', 'btn1')">Reveal</button>
+    </div>
+    <div class="textBox">
+        <div class="question">Q3: 
+            <span>
+                What is the magical glowing bird whose feathers bring fortune?
+            </span>
+        </div>
+        <div class="answer" id="2">
+            Firebird!
+        </div>
+        <button id="btn2" onclick="showOrHide('2', 'btn2')">Reveal</button>
+    </div>
+
+    <script>
+        function showOrHide(id, btnID) {
+            let answer = document.getElementById(id);
+            let myBtn = document.getElementById(btnID);
+            let box = answer.parentElement;
+            //if it has open, removes it, vise versa
+            box.classList.toggle('open');
+
+            if (myBtn.innerText == "Reveal") {
+                myBtn.innerText = "Hide";
+            } else {
+                myBtn.innerText = "Reveal";
+            }
+        }
+    </script>
+</body>
+
+</html>
