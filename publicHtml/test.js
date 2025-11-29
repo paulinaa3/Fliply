@@ -1,8 +1,8 @@
-var deckName='Russian Folklore'
+       var deckName='Russian Folklore'
        var array
        
        var title=document.getElementById('heading')
-       title.innerText='Test for ' + deckName + " (10 Questions)"
+       title.innerText='Practice Test for ' + deckName
 
        // Quickstart: https://platform.openai.com/docs/quickstart
 
@@ -39,7 +39,7 @@ var deckName='Russian Folklore'
 
            // Create client using your API key (local only!)
            const client = new OpenAI({
-               apiKey: "KeyHere",
+               apiKey: "keyhere",
 
                // You should never expose API keys, so this is necessary to paste the key into HTML like this
                // We will hide it in the back end and access it through a post call
@@ -85,10 +85,22 @@ var deckName='Russian Folklore'
        createQuestions(10);
 
        //var divs = document.getElementsByTagName('div')
-       var divs=document.getElementsByClassName("Question")
-       for(var i=0;i<divs.length;i++){
-          divs[i].innerText=array[i*2]
+       //assign the text for each Question
+       var spans=document.getElementsByTagName("span")
+       for(var i=0;i<spans.length;i++){
+          spans[i].innerText=array[i*2]
        }
+
+       //assign the answer for each question
+        // function displayAnswer(qNumber) { 
+        //   var divAns = document.getElementById(qNumber)
+        //   divAns.innerText=array[qNumber]
+        // }
+       for(var i=1;i<array.length;i+=2){
+          var divAns = document.getElementById(i)
+          divAns.innerText=array[i]
+       }
+
 
        //hide loading page and now show the answers
 
@@ -98,10 +110,7 @@ var deckName='Russian Folklore'
 
        }
 
-       function displayAnswer(qNumber) { 
-          var divAns = document.getElementById(qNumber)
-          divAns.innerText=array[qNumber]
-        }
+       
 
         function createQuestions(n) {
             //var body = document.getElementsByTagName('body')[0]
@@ -109,27 +118,74 @@ var deckName='Russian Folklore'
             var idTracker=1
             var qTracker=1
             for (var i=0;i<n;i++){
-                var divQ=  document.createElement('div')
-                divQ.innerText = "Q"+qTracker
-                qTracker+=1
-                divQ.setAttribute('class', "Question")
-                
+                //create outer box to hold Q & Ans
+                var enclosingBox = document.createElement('div')
+                enclosingBox.setAttribute('class', "outerBox")
 
+                //create division element for question
+                var divQ=  document.createElement('div')
+                divQ.innerText = "Q"+qTracker + ":"
+                qTracker+=1
+                divQ.setAttribute('class', "question")
+
+                //create span element for question's text
+                var spanQ = document.createElement('span')
+                
+                //create division element for answer
                 var divAns=  document.createElement('div')
-                divAns.innerText = "Show Answer"
-                divAns.setAttribute('id', idTracker)
-                divAns.setAttribute('class', "Answer")
-                divAns.setAttribute('onclick', "displayAnswer("+idTracker+")")
-                //onclick="displayAnswer(3)
+                var divAnsId= idTracker
+                divAns.setAttribute('id', divAnsId)
+                divAns.setAttribute('class', "answer")
                 idTracker+=2
 
-                body.appendChild(divQ)
-                body.appendChild(divAns)
+                //create button
+                var ansButton = document.createElement('button')
+                var ansButtonId = "btn"+i
+                ansButton.setAttribute('id', ansButtonId)
+                ansButton.innerText="Reveal"
+
+                //adding button's onclick function: onclick="toggleAnswer('0', 'btn0')"
+                ansButton.setAttribute('onclick', "toggleAnswer("+divAnsId+",'"+ansButtonId+"')")
+                
+                //<button id="btn0" onclick="toggleAnswer('0', 'btn0')">Reveal</button>
+
+                divQ.appendChild(spanQ)
+                enclosingBox.appendChild(divQ)
+                enclosingBox.appendChild(divAns)
+                enclosingBox.appendChild(ansButton)
+
+                body.appendChild(enclosingBox)
             }
             
         }
 
+        // function displayAnswer(qNumber) { 
+        //   var divAns = document.getElementById(qNumber)
+        //   divAns.innerText=array[qNumber]
+        // }
+
+        function toggleAnswer(divAnsId, btnID) {
+            let divAns = document.getElementById(divAnsId);
+            let ansBtn = document.getElementById(btnID);
+            let enclosingBox = divAns.parentElement;
+
+            //toggle visibility of answer by altering the classList
+            if (enclosingBox.classList.contains('open')) {//visible->hidden
+                enclosingBox.classList.remove('open');
+            } else {//hidden->visible
+                enclosingBox.classList.add('open');
+            }
+
+            //change text of button to match
+            if (ansBtn.innerText == "Reveal") {
+                ansBtn.innerText = "Hide";
+            } else {
+                ansBtn.innerText = "Reveal";
+            }
+        }
+
 
        window.sendRequest = sendRequest;
-       window.displayAnswer = displayAnswer;
+      // window.displayAnswer = displayAnswer;
        window.createQuestions = createQuestions;
+       window.toggleAnswer = toggleAnswer;
