@@ -11,6 +11,48 @@ img {
     width: 70px;
 }
 
+/* dropdown menu */
+.dropdownContainer {
+    float: left;
+    margin-left: 5px;
+    position: relative;
+}
+
+.dropButton {
+    position: absolute;
+    top: 45px;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 135px;
+    z-index: 1;
+    margin-top: 85px;
+}
+
+.dropdownContent a {
+    color: rgb(62, 62, 62);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 25px;
+    background-color: white;
+    margin: 10px 0;
+    box-shadow: 0px 0px 8px #d9dde8;
+}
+
+.dropdownContent a:hover {
+    background-color: pink;
+}
+
+.dropdownContainer:hover .dropdownContent {
+    display: block;
+}
+
 
 /* authpage css */
 .authPage #authBox {
@@ -50,7 +92,7 @@ img {
 }
 
 .authPage button:hover {
-    cursor:pointer;
+    cursor: pointer;
     background-color: rgb(255, 179, 192);
 }
 
@@ -230,13 +272,13 @@ img {
 }
 
 .reviewCardsPage #cardTitle {
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }
 
 
 .reviewCardsPage #cardCount {
-    font-size:15px;
+    font-size: 15px;
 }
 
 
@@ -261,7 +303,7 @@ img {
 }
 
 .reviewCardsPage #cardDisplay {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .reviewCardsPage #cardContainer {
@@ -299,25 +341,26 @@ img {
 
 
 /*library css */
-#libraryPage h2{
+#libraryPage h2 {
     margin-left: 4%;
 }
+
 #libraryPage .cardBox {
     background-color: white;
     padding: 8px;
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0px 0px 8px #d9dde8;
-    width:90%;
+    width: 90%;
     margin: 10px auto;
-    margin-bottom:15px;
+    margin-bottom: 15px;
 }
 
-#libraryPage .cardBox:hover{
-    cursor:pointer;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+#libraryPage .cardBox:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
-    
+
 }
 
 #libraryPage .cardRow {
@@ -332,22 +375,22 @@ img {
 }
 
 
-#libraryPage .cardRow p{
-    font-size:12px;
+#libraryPage .cardRow p {
+    font-size: 12px;
 }
 
-#libraryPage .cardRow button{
-    font-size:12px;
-    color:rgb(62, 62, 62);
-    padding:5px;
+#libraryPage .cardRow button {
+    font-size: 12px;
+    color: rgb(62, 62, 62);
+    padding: 5px;
     text-align: center;
     background-color: pink;
     border-radius: 20px;
-    border:0px;
+    border: 0px;
     font-family: sans-serif;
 }
 
-#libraryPage .cardRow button:hover{
-    cursor:pointer;
+#libraryPage .cardRow button:hover {
+    cursor: pointer;
     background-color: rgb(255, 179, 192);
 }

@@ -115,9 +115,39 @@ function setSaveBtn(shouldSave) {
     }
 }
 
-function saveCards() {
+// function saveCards() {
+//     setSaveBtn(false)
+//     console.log(createObject())
+// }
+
+async function saveCards() {
     setSaveBtn(false)
-    console.log(createObject())
+    const obj = createObject();
+
+    try {
+        let response = await fetch("/saveCards", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj)
+        });
+        let data = await response.json();
+        console.log("Server response:", data);
+    } catch (err) {
+        console.error("Fetch error:", err);
+    }
+
+    // fetch("/saveCards", {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify(obj)
+    // })
+    //     .then(res => res.text())
+    //     .then(text => {
+    //         console.log("Server responded:", text);
+    //     })
+    //     .catch(err => {
+    //         console.error("Error:", err);
+    //     });
 }
 
 function createObject() {
@@ -138,7 +168,8 @@ function createObject() {
         });
     }
 
-    return JSON.stringify(obj, null, '\t')
+    return obj
+    // return JSON.stringify(obj, null, '\t')
 }
 
 function loadCards(cardSet) {
