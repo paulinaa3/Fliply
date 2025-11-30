@@ -21,12 +21,10 @@ app.use(express.static(publicHtml));
 
 
 
-
 //defaults to login page
 app.get('/', function (req, res) {
    res.sendFile(path.join(publicHtml, 'login.html'))
 })
-
 
 
 
@@ -48,13 +46,11 @@ app.post('/login', async function (req, res) {
            const email = query.email.toLowerCase();
            const password = query.password;
 
-
            //tries to find user in mongo database
            const user = await User.findOne({ email })
            if (!user) {
                return res.status(400).json({ message: "Invalid" });
            }
-
 
            //compares password from mongo db
            const samePassword = await bcrypt.compare(password, user.passwordHash);
@@ -81,13 +77,11 @@ app.post('/register', async function (req, res) {
            const email = query.email.toLowerCase();
            const password = query.password;
 
-
            //if user exists, exit
            const user = await User.findOne({ email })
            if (user) {
                return res.status(400).json({ message: "Invalid" });
            }
-
 
            //compares password from mongo db
            const passwordHash = await bcrypt.hash(password, 10);
@@ -106,8 +100,6 @@ app.get('/practiceTest', (req, res) => {
 });
 
 
-
-
 // placeholder for save card sets to the database
 app.post("/saveCards", express.json(), (req, res) => {
    console.log("Received:", req.body);
@@ -118,15 +110,12 @@ app.post("/saveCards", express.json(), (req, res) => {
 app.post("/api/generateQuiz", express.json(), async (req, res) => {
    try {
        const { userText } = req.body;
-
-
        const completion = await client.chat.completions.create({
            model: "gpt-5-nano",
            messages: [
                { role: "user", content: userText }
            ]
        });
-
 
        const output = completion.choices[0].message.content;
        res.status(200).json({ output });
@@ -135,9 +124,6 @@ app.post("/api/generateQuiz", express.json(), async (req, res) => {
        res.status(500).json({ message: "OpenAI error" });
    }
 });
-
-
-
 
 
 
