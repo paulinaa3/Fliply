@@ -14,23 +14,23 @@ app.use(express.static(publicHtml));
 
 
 //defaults to login page
-app.get('/', function(req,res){
+app.get('/', function (req, res) {
     res.sendFile(path.join(publicHtml, 'login.html'))
 })
 
 
 //serve html login page
-app.get('/login', function(req,res){
+app.get('/login', function (req, res) {
     res.sendFile(path.join(publicHtml, 'login.html'))
 })
 
 //handle login logic
-app.post('/login', async function(req, res) {
+app.post('/login', async function (req, res) {
     let body = '';
-    req.on('data', function(chunk) {
+    req.on('data', function (chunk) {
         body += chunk;
     })
-    req.on('end', async function() {
+    req.on('end', async function () {
         try {
             const query = JSON.parse(body);
             const email = query.email.toLowerCase();
@@ -55,12 +55,12 @@ app.post('/login', async function(req, res) {
     })
 })
 
-app.post('/register', async function(req,res) {
+app.post('/register', async function (req, res) {
     let body = '';
-    req.on('data', function(chunk) {
+    req.on('data', function (chunk) {
         body += chunk;
     })
-    req.on('end', async function() {
+    req.on('end', async function () {
         try {
             const query = JSON.parse(body);
             const email = query.email.toLowerCase();
@@ -83,15 +83,21 @@ app.post('/register', async function(req,res) {
     })
 })
 
+// placeholder for save card sets to the database
+app.post("/saveCards", express.json(), (req, res) => {
+    console.log("Received:", req.body);
+    res.status(200).json({ message: "Success" });
+});
+
 
 mongoose.connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 5000,
-  })
+})
     .then(() => {
-      app.listen(8080, () => {
-        console.log("Running...");
-      });
+        app.listen(8080, () => {
+            console.log("Running...");
+        });
     })
     .catch((err) => {
-      console.error(err);
+        console.error(err);
     });
