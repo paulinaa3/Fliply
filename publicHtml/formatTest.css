@@ -1,25 +1,9 @@
        
-    #showAI{
+    /* #showAI{
            margin-top: 15px;
            padding: 10px;
            border: 1px solid #ccc;
            min-height: 60px;
-    }
-    /*
-    div.question {
-          background-color: rgba(211, 211, 211, 0.852);
-          border: 1px solid rgb(197, 61, 84);
-          font-size: 26px;
-          border-radius: 10px;
-    }
-
-    div.answer {
-          background-color: rgba(211, 211, 211, 0.269);
-          border: 1px solid rgb(197, 61, 84);
-          margin-bottom: 15px;
-          font-size: 26px;
-          border-radius: 10px;
-          
     } */
     #loadingScreen {
                 position: fixed;
@@ -69,19 +53,19 @@
         padding: 16px;
     }
     /* additions */
-    @font-face {
+    /* @font-face {
         font-family: 'Bubble Body';
         src: url('../fonts/Bobbleboddy.ttf') format('truetype');
-    }
-    body{
+    } */
+    #quizBody{
             margin:20px;
             color: rgb(62, 62, 62);
-            font-family: 'Bubble Body', sans-serif;
+            /* font-family: 'Bubble Body', sans-serif; */
     }
-    h2{
+    #quizTitle h2{
             margin-left: 4%;
     }
-    button {
+    .quizButton {
             color: rgb(62, 62, 62);
             background-color: pink;
             border: 0px;
@@ -92,12 +76,12 @@
             border-radius: 20px;
             font-size: 16px;
             cursor: pointer;
-        }
-        button:hover {
+    }
+    .quizButton :hover {
             cursor:pointer;
             background-color: rgb(255, 179, 192);
-        }
-        .outerBox{
+    }
+    .outerBox{
             background: white;
             border-radius: 20px;
             padding: 20px;
@@ -106,31 +90,31 @@
             width:90%;
             margin: 10px auto;
             margin-bottom:20px;
-        }
-        .outerBox:hover {
+    }
+    .outerBox:hover {
             transform: translateY(-2px);
-        }
-        span{
+    }
+    .quizSpan {
             font-family: sans-serif;
             font-size:20px;
             color: rgb(62, 62, 62);
-        }
-        .question{
+    }
+    .question{
             color:rgb(255, 179, 192);
             font-family: 'Bubble Body', sans-serif;
             font-size:25px;
-        }
-        .answer {
+    }
+    .answer {
             display: block;
             max-height: 0;
             opacity: 0;
             transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
             margin-top: 0;
             pointer-events: none;
-        }
+    }
         .outerBox.open .answer {
             max-height: 800px;  
             opacity: 1;
             margin-top: 10px;
-        }
+    }
        

@@ -1,7 +1,7 @@
        var deckName='Russian Folklore'
        var array
        
-       var title=document.getElementById('heading')
+       var title=document.getElementById('quizTitle')
        title.innerText='Practice Test for ' + deckName
 
        // Quickstart: https://platform.openai.com/docs/quickstart
@@ -39,7 +39,7 @@
 
            // Create client using your API key (local only!)
            const client = new OpenAI({
-               apiKey: "keyhere",
+               apiKey: "YourKeyHere",
 
                // You should never expose API keys, so this is necessary to paste the key into HTML like this
                // We will hide it in the back end and access it through a post call
@@ -130,7 +130,8 @@
 
                 //create span element for question's text
                 var spanQ = document.createElement('span')
-                
+                spanQ.setAttribute('class', "quizSpan")
+
                 //create division element for answer
                 var divAns=  document.createElement('div')
                 var divAnsId= idTracker
@@ -142,6 +143,7 @@
                 var ansButton = document.createElement('button')
                 var ansButtonId = "btn"+i
                 ansButton.setAttribute('id', ansButtonId)
+                ansButton.setAttribute('class', "quizButton")
                 ansButton.innerText="Reveal"
 
                 //adding button's onclick function: onclick="toggleAnswer('0', 'btn0')"
