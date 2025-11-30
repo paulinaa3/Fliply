@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+   <meta charset="UTF-8">
+   <title>OpenAI API Demo</title>
+
+
+   <script type="module">
+       var deckName='Russian Folklore'
+       var array
+       
+       var title=document.getElementById('heading')
+       title.innerText='Test for ' + deckName
+
+       // Quickstart: https://platform.openai.com/docs/quickstart
+
+
+       import OpenAI from "https://esm.run/openai";
+
+
+       async function sendRequest() {
+           const userText = "based off these flipcards(Flipcard 1 Front: Baba Yaga Back: Witch-like forest spirit who lives in a hut on chicken legs; may help or harm travelers. Flipcard 2 Front: Koschei the Deathless Back: Evil sorcerer who hides his soul inside nested objects, making him nearly impossible to kill. Flipcard 3 Front: Firebird Back: Magical glowing bird whose feathers bring fortune but also danger; central to many heroic quests. Flipcard 4 Front: Vasilisa the Beautiful Back: Clever heroine who survives Baba Yaga’s trials with help from a magical doll given by her mother.), i want you to generate 4 questions and answers in comma seperated format like but don't literally write q1 and ans1 : q1,ans1,q2,ans2,q3,ans3,q4,ans4"
+           var output = ""
+
+
+           // Create client using your API key (local only!)
+           const client = new OpenAI({
+               apiKey: "YourKeyHere",
+
+
+               // You should never expose API keys, so this is necessary to paste the key into HTML like this
+               // We will hide it in the back end and access it through a post call
+               dangerouslyAllowBrowser: true
+           });
+
+
+           // Just a placeholder while waiting for the response
+
+
+           try {
+               const completion = await client.chat.completions.create({
+                   // This is the cheapest model. If it is terrible, we can also use "gpt-5-mini", which is still cheap,
+                   // or go all out and use "gpt-5.1". We would have to go crazy testing to even spend $20 on this project
+                   model: "gpt-5-nano",
+                   messages: [
+                       // The "system" role is used for instructions about how the LLM should work,
+                       // and is used behind the scenes without displaying its response
+                       // "developer" is another role we might want to use if we need structured responses
+                       // "user" is appropriate for most basic conversations
+                       // "assistant" can be used for ongoing conversations, which we probably don't need it for this project,
+                       //      but it is a relatively new role that I haven't used before.
+                       { role: "user", content: userText }
+                   ]
+               });
+
+
+               output= completion.choices[0].message.content;
+               result.innerText=output
+
+
+           } catch (err) {
+               output = "Error: " + err;
+           }
+       console.log(output)
+
+       array=output.split(',')
+       var divs = document.getElementsByTagName('div')
+       for(var i=0;i<array.length;i+=2){
+          divs[i].innerText=array[i]
+       }
+
+       }
+
+       function displayAnswer(qNumber) {
+           
+       var divAns = document.getElementById(qNumber)
+       divAns.innerText=array[qNumber]
+    }
+
+
+       window.sendRequest = sendRequest;
+       window.displayAnswer = displayAnswer;
+   </script>
+   <!-- <script>
+      
+   </script> -->
+
+
+   <style>
+       textarea {
+           width: 100%;
+           height: 80px;
+       }
+
+       #result {
+           margin-top: 15px;
+           padding: 10px;
+           border: 1px solid #ccc;
+           min-height: 60px;
+       }
+       div.Question {
+          background-color: rgba(211, 211, 211, 0.852);
+          border: 1px solid rgb(197, 61, 84);
+       }
+
+       div.Answer {
+          background-color: rgba(211, 211, 211, 0.269);
+          border: 1px solid rgb(197, 61, 84);
+          margin-bottom: 15px;
+       }
+       div {
+          font-size: 26px;
+       }
+
+       
+   </style>
+</head>
+
+
+<body onload="sendRequest()">
+   <h1 id="heading"></h1>
+
+
+   <!-- <textarea id="inputBox" placeholder="Type something..."></textarea>
+   <br><br>
+   <button onclick="sendRequest()">Send</button> -->
+
+
+   <p class="Answer" id="result"></p> 
+
+   <div class="Question">Q1</div>
+   <div id="1" class="Answer" onclick="displayAnswer(1)">Show Answer</div>
+
+   <div class="Question">Q2</div>
+   <div id="3" class="Answer" onclick="displayAnswer(3)">Show Answer</div>
+
+   <div class="Question">Q3</div>
+   <div id="5" class="Answer" onclick="displayAnswer(5)">Show Answer</div>
+
+   <div class="Question">Q4</div>
+   <div id="7" class="Answer" onclick="displayAnswer(7)">Show Answer</div>
+</body>
+
+
+</html>
