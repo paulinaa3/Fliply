@@ -1,20 +1,20 @@
+function sendReq() {
+  const myUser = localStorage.getItem("userId")
+  const url = "/sets?userId=" + myUser
+  fetch(url)
+  .then(function(res) {
+    return res.json()
+  })
+  .then (function(data){
+    loadLibrary(data.userSets)
+  })
+  .catch(function(err) {
+    console.log(err)
+  })
+}
 
-const sampleSets = [
-    {
-      _id: "1",
-      name: "DNS",
-      cards: [
-        { cardId: 0, front: "DNS", back: "Domain Name System" },
-        { cardId: 1, front: "gateway", back: "router connecting networks" }
-      ]
-    },
-    {
-      _id: "2",
-      name: "Networking Basics",
-      cards: [
-        { cardId: 0, front: "IP", back: "Internet Protocol" }
-      ]
-    }]
+
+
 
 function checkLength(cards) {
     if (cards.length == 1) {
@@ -24,11 +24,14 @@ function checkLength(cards) {
 }
 
 
-function loadLibrary() {
+function loadLibrary(userSets) {
+  console.log(userSets)
     let container = document.getElementById("setsList")
     container.innerHTML = ""
-    for (let i = 0; i < sampleSets.length; i++) {
-        let currCard = sampleSets[i]
+    for (let i = 0; i < userSets.length; i++) {
+        let currCard = userSets[i]
+        console.log('this is my card:')
+        console.log(currCard)
         
         const cardDiv = document.createElement('div');
         cardDiv.className = "cardBox"
@@ -66,4 +69,4 @@ function loadLibrary() {
     }
 }
 
-loadLibrary();
+sendReq();

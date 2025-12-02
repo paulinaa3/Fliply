@@ -64,7 +64,8 @@ function sendReq(url) {
                 }, 1200);
             }
             else {
-                //we're in login, so sends to home page 
+                //we're in login, so sends to home page
+                localStorage.setItem("userId", data.userId); 
                 window.location.href = "library.html";
             }
         }
