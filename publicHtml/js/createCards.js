@@ -115,61 +115,75 @@ function setSaveBtn(shouldSave) {
     }
 }
 
-// function saveCards() {
-//     setSaveBtn(false)
-//     console.log(createObject())
-// }
+
+function checkExist() {
+    const setId = localStorage.getItem("setId")
+    if (setId) {
+        editCards(setId)
+    }
+    else {
+        saveCards()
+    }
+}
+
 
 async function saveCards() {
     setSaveBtn(false)
     const obj = createObject();
+    fetch("/saveCards", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(obj)
+    })
+    .then(function(res) {
+        return res.json()
+    })
+    .then(function(data) {
+        let myId = data.setId
+        localStorage.setItem("setId", myId)
+    })
+    .catch(function(err) {
+        console.log(err)
+    })
+}
 
+async function editCards(setId) {
+    setSaveBtn(false)
+    const obj = createObject();
+    //add id, to edit
+    obj.setId = setId
     try {
-        let response = await fetch("/saveCards", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(obj)
-        });
-        let data = await response.json();
-        console.log("Server response:", data);
-    } catch (err) {
-        console.error("Fetch error:", err);
-    }
-
-    // fetch("/saveCards", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(obj)
-    // })
-    //     .then(res => res.text())
-    //     .then(text => {
-    //         console.log("Server responded:", text);
-    //     })
-    //     .catch(err => {
-    //         console.error("Error:", err);
-    //     });
+        await fetch("/editCards", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(obj)
+        })
+      } catch(err) {
+        console.log(err)
+      }
 }
 
 function createObject() {
     let setName = document.getElementById('setName').value.trim()
     let cardFronts = document.getElementsByClassName('cardFront')
     let cardBacks = document.getElementsByClassName('cardBack')
+    const myUser = localStorage.getItem("userId")
+    console.log('my user: ' + myUser)
 
     let obj = {
         name: setName,
+        owner: myUser,
         cards: []
     }
 
     for (let i = 0; i < cardFronts.length; i++) {
         obj.cards.push({
-            cardId: i,
             front: cardFronts[i].value.trim(),
             back: cardBacks[i].value.trim()
         });
     }
 
     return obj
-    // return JSON.stringify(obj, null, '\t')
 }
 
 function loadCards(cardSet) {
