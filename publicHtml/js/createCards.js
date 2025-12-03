@@ -1,19 +1,11 @@
-// for testing load cards
-let sample = {
-    "name": "DNS",
-    "cards": [
-        {
-            "cardId": 0,
-            "front": "DNS",
-            "back": "Domain Name System"
-        },
-        {
-            "cardId": 1,
-            "front": "gateway",
-            "back": "router connecting networks"
-        }
-    ]
-}
+window.addEventListener("DOMContentLoaded", function () {
+    loadSet()
+        .then(function (cardSet) {
+            if (cardSet) {
+                loadCards(cardSet)
+            };
+        });
+});
 
 // used in ids for created elements
 count = 0;
@@ -135,16 +127,16 @@ async function saveCards() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(obj)
     })
-    .then(function(res) {
-        return res.json()
-    })
-    .then(function(data) {
-        let myId = data.setId
-        localStorage.setItem("setId", myId)
-    })
-    .catch(function(err) {
-        console.log(err)
-    })
+        .then(function (res) {
+            return res.json()
+        })
+        .then(function (data) {
+            let myId = data.setId
+            localStorage.setItem("setId", myId)
+        })
+        .catch(function (err) {
+            console.log(err)
+        })
 }
 
 async function editCards(setId) {
@@ -154,13 +146,13 @@ async function editCards(setId) {
     obj.setId = setId
     try {
         await fetch("/editCards", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(obj)
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj)
         })
-      } catch(err) {
+    } catch (err) {
         console.log(err)
-      }
+    }
 }
 
 function createObject() {
@@ -184,6 +176,37 @@ function createObject() {
     }
 
     return obj
+}
+
+function loadSet() {
+    const setId = localStorage.getItem("setId");
+    const url = "/set?setId=" + setId;
+
+    return fetch(url)
+        .then(function (res) {
+            return res.json()
+        })
+        .then(function (data) {
+            console.log("Loaded set:", data.set);
+            return data.set;
+        })
+        .catch(function (err) {
+            console.log(err);
+            return null;
+        });
+}
+
+
+function updateScreen() {
+    const setId = localStorage.getItem("setId");
+    if (setId) {
+        loadSet()
+            .then(function (cardSet) {
+                if (cardSet) {
+                    loadCards(cardSet);
+                }
+            });
+    }
 }
 
 function loadCards(cardSet) {

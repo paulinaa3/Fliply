@@ -1,24 +1,33 @@
-// for testing load cards
-let sample = {
-    "name": "DNS",
-    "cards": [
-        {
-            "cardId": 0,
-            "front": "DNS",
-            "back": "Domain Name System"
-        },
-        {
-            "cardId": 1,
-            "front": "gateway",
-            "back": "router connecting networks"
+window.addEventListener("DOMContentLoaded", function () {
+    loadSet().then(function (cardSet) {
+        if (cardSet) {
+            loadCards(cardSet);
         }
-    ]
-}
+    });
+});
+
 
 let rotation = 0;
 function flipCard() {
     rotation += 180
     document.getElementById('cardContainer').style.transform = `rotateX(${rotation}deg)`
+}
+
+
+function loadSet() {
+    const setId = localStorage.getItem("setId");
+    const url = "/set?setId=" + setId;
+
+    return fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            console.log("Loaded set:", data.set);
+            return data.set;
+        })
+        .catch(err => {
+            console.log(err);
+            return null;
+        });
 }
 
 let cardNumber = 0;
