@@ -65,7 +65,8 @@ function sendReq(url) {
             }
             else {
                 //we're in login, so sends to home page
-                window.location.href = "home.html";
+                localStorage.setItem("userId", data.userId); 
+                window.location.href = "library.html";
             }
         }
         else {
