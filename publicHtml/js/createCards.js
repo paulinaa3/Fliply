@@ -221,7 +221,9 @@ function loadCards(cardSet) {
     }
 }
 
-// TODO: Consider how and when to call these; calling onload="addCard()" might happen after loadCards()
-// depending on how we call, so we need to test sequence and adjust
+function logout(){
+    localStorage.removeItem('userId');
+  }
+
+
 addCard()
-// loadCards(sample)

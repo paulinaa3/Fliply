@@ -67,4 +67,8 @@ function updateDisplays() {
     document.getElementById('cardCount').innerText = (cardNumber + 1) + ' / ' + (cards.length)
 }
 
+function logout(){
+    localStorage.removeItem('userId');
+  }
+
 loadCards(sample)

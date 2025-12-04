@@ -1,3 +1,9 @@
+window.addEventListener("DOMContentLoaded", function () {
+  sendReq();
+  localStorage.removeItem("setId");
+});
+
+
 function sendReq() {
   const myUser = localStorage.getItem("userId")
   const url = "/sets?userId=" + myUser
@@ -14,6 +20,12 @@ function sendReq() {
 }
 
 
+//set id of card clicked
+//and renavigate to another page
+function setCard(setId, page) {
+  localStorage.setItem("setId", setId)
+  window.location.href = page;
+}
 
 
 function checkLength(cards) {
@@ -25,16 +37,14 @@ function checkLength(cards) {
 
 
 function loadLibrary(userSets) {
-  console.log(userSets)
     let container = document.getElementById("setsList")
     container.innerHTML = ""
     for (let i = 0; i < userSets.length; i++) {
         let currCard = userSets[i]
-        console.log('this is my card:')
-        console.log(currCard)
         
         const cardDiv = document.createElement('div');
         cardDiv.className = "cardBox"
+        cardDiv.addEventListener("click", () => setCard(userSets[i]._id, 'reviewCards.html'));
 
         const row = document.createElement('div');
         row.className = "cardRow";
@@ -51,10 +61,22 @@ function loadLibrary(userSets) {
         let quizButton = document.createElement('button')
         quizButton.innerText = "Quiz Me"
         quizButton.className = "quiz"
+        quizButton.addEventListener("click", (event) => {
+          event.stopPropagation(); 
+          setCard(userSets[i]._id, 'practiceTest.html');
+        });
+        
+
 
         let editButton = document.createElement('button')
         editButton.innerText = "Edit"
         editButton.className = "edit"
+        editButton.addEventListener("click", (event) => {
+          event.stopPropagation(); 
+          setCard(userSets[i]._id, 'createCards.html');
+        });
+
+        
 
         buttonRow.appendChild(quizButton)
         buttonRow.appendChild(editButton)
@@ -69,4 +91,6 @@ function loadLibrary(userSets) {
     }
 }
 
-sendReq();
+function logout(){
+  localStorage.removeItem('userId');
+}

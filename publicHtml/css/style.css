@@ -17,6 +17,18 @@ body {
     font-family: 'Bubble Body';
     src: url('../fonts/Bobbleboddy.ttf') format('truetype');
   }
+
+  header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 0 20px;
+}
+
+.logoutButton a{
+   text-decoration: none;
+   color: rgb(62, 62, 62);
+}
  
  
  /* dropdown menu */
