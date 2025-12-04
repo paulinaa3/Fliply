@@ -151,6 +151,9 @@ function toggleAnswer(divAnsId, btnID) {
 
 
 window.sendRequest = sendRequest;
-// window.displayAnswer = displayAnswer;
 window.createQuestions = createQuestions;
 window.toggleAnswer = toggleAnswer;
+
+function logout(){
+    localStorage.removeItem('userId');
+  }
