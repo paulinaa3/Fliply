@@ -6,9 +6,14 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body id="libraryPage">
-        <a href="library.html">
-            <img src="imgs/logo.png">
-        </a>
+        <header>
+            <a href="library.html">
+                <img src="imgs/logo.png" id="logo">
+            </a>
+            <div class="logoutButton">
+                <a onclick="logout()" href="login.html">Logout</a>
+            </div>
+        </header>
         <div id="libraryContainer">
             <h2>Your Library</h2>
             <div id="setsList"></div>
