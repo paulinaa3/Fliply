@@ -1,16 +1,16 @@
-var deckName='Russian Folklore'
+var deckName = 'Russian Folklore'
 var array
 
-var title=document.getElementById('quizTitle')
-title.innerText='Practice Test for ' + deckName
+var title = document.getElementById('quizTitle')
+title.innerText = 'Practice Test for ' + deckName
 
 // Quickstart: https://platform.openai.com/docs/quickstart
 
 
 async function sendRequest() {
     //do loading and hide the quiz
-    
-    var loadingPage=document.getElementById('loadingScreen')
+
+    var loadingPage = document.getElementById('loadingScreen')
     var quizArea = document.getElementById('quizArea')
 
     loadingPage.style.display = 'flex';
@@ -40,23 +40,23 @@ async function sendRequest() {
             body: JSON.stringify({ userText }),
         });
         const data = await response.json();
-        output = data.output; 
+        output = data.output;
     }
-    catch(err) {
+    catch (err) {
         console.log(err)
         return
     }
 
-    array=output.split(',')
+    array = output.split(',')
 
     //create 10 questions
     createQuestions(10);
 
     //var divs = document.getElementsByTagName('div')
     //assign the text for each Question
-    var spans=document.getElementsByTagName("span")
-    for(var i=0;i<spans.length;i++){
-        spans[i].innerText=array[i*2]
+    var spans = document.getElementsByTagName("span")
+    for (var i = 0; i < spans.length; i++) {
+        spans[i].innerText = array[i * 2]
     }
 
     //assign the answer for each question
@@ -64,9 +64,9 @@ async function sendRequest() {
     //   var divAns = document.getElementById(qNumber)
     //   divAns.innerText=array[qNumber]
     // }
-    for(var i=1;i<array.length;i+=2){
+    for (var i = 1; i < array.length; i += 2) {
         var divAns = document.getElementById(i)
-        divAns.innerText=array[i]
+        divAns.innerText = array[i]
     }
 
 
@@ -82,18 +82,18 @@ async function sendRequest() {
 
 function createQuestions(n) {
     //var body = document.getElementsByTagName('body')[0]
-    var body = document.getElementById('quizArea')
-    var idTracker=1
-    var qTracker=1
-    for (var i=0;i<n;i++){
+    var body = document.getElementById('quizContainer')
+    var idTracker = 1
+    var qTracker = 1
+    for (var i = 0; i < n; i++) {
         //create outer box to hold Q & Ans
         var enclosingBox = document.createElement('div')
         enclosingBox.setAttribute('class', "outerBox")
 
         //create division element for question
-        var divQ=  document.createElement('div')
-        divQ.innerText = "Q"+qTracker + ": "
-        qTracker+=1
+        var divQ = document.createElement('div')
+        divQ.innerText = "Q" + qTracker + ": "
+        qTracker += 1
         divQ.setAttribute('class', "question")
 
         //create span element for question's text
@@ -101,22 +101,22 @@ function createQuestions(n) {
         spanQ.setAttribute('class', "quizSpan")
 
         //create division element for answer
-        var divAns=  document.createElement('div')
-        var divAnsId= idTracker
+        var divAns = document.createElement('div')
+        var divAnsId = idTracker
         divAns.setAttribute('id', divAnsId)
         divAns.setAttribute('class', "answer")
-        idTracker+=2
+        idTracker += 2
 
         //create button
         var ansButton = document.createElement('button')
-        var ansButtonId = "btn"+i
+        var ansButtonId = "btn" + i
         ansButton.setAttribute('id', ansButtonId)
         ansButton.setAttribute('class', "quizButton")
-        ansButton.innerText="Reveal"
+        ansButton.innerText = "Reveal"
 
         //adding button's onclick function: onclick="toggleAnswer('0', 'btn0')"
-        ansButton.setAttribute('onclick', "toggleAnswer("+divAnsId+",'"+ansButtonId+"')")
-        
+        ansButton.setAttribute('onclick', "toggleAnswer(" + divAnsId + ",'" + ansButtonId + "')")
+
         //<button id="btn0" onclick="toggleAnswer('0', 'btn0')">Reveal</button>
 
         divQ.appendChild(spanQ)
@@ -126,7 +126,7 @@ function createQuestions(n) {
 
         body.appendChild(enclosingBox)
     }
-    
+
 }
 
 function toggleAnswer(divAnsId, btnID) {
@@ -154,6 +154,6 @@ window.sendRequest = sendRequest;
 window.createQuestions = createQuestions;
 window.toggleAnswer = toggleAnswer;
 
-function logout(){
+function logout() {
     localStorage.removeItem('userId');
-  }
+}

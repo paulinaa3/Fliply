@@ -22,7 +22,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 20px 0 3px;
 }
 
 .logoutButton a {
@@ -45,8 +45,12 @@ header {
     top: 45px;
     font-size: 16px;
     border: none;
+    color: rgb(62, 62, 62);
+    background-color: pink;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 25px;
 }
-
 
 .dropdownContent {
     display: none;
@@ -56,7 +60,6 @@ header {
     z-index: 1;
     margin-top: 85px;
 }
-
 
 .dropdownContent a {
     color: rgb(62, 62, 62);
@@ -70,7 +73,7 @@ header {
 }
 
 
-.dropdownContent a:hover {
+.dropdownContainer .dropdownContent a:hover {
     background-color: pink;
 }
 
@@ -420,6 +423,11 @@ header {
 
 
 /*library css */
+#libraryPage #libraryContainer {
+    width: 88%;
+    margin: auto;
+}
+
 #libraryPage h2 {
     margin-left: 4%;
 }
@@ -505,7 +513,6 @@ header {
     width: 200px;
     background-color: rgb(247, 247, 247);
     border: 5px solid pink;
-    ;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -536,13 +543,15 @@ header {
 }
 
 
-#quizBody #quizArea {
-    display: none;
-    padding: 16px;
+#quizBody #quizContainer {
+    width: 80%;
+    margin: auto;
 }
 
-
-
+#quizBody #quizArea {
+    display: none;
+    /* padding: 16px; */
+}
 
 #quizBody #quizTitle h2 {
     margin-left: 4%;
@@ -575,7 +584,7 @@ header {
     padding: 20px;
     margin-bottom: 25px;
     box-shadow: 0px 0px 8px #d9dde8;
-    width: 90%;
+    /* width: 90%; */
     margin: 10px auto;
     margin-bottom: 20px;
 }

@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Library</title>
-        <link rel="icon" type="image/png" href="imgs/icon.png">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body id="libraryPage">
-        <header>
-            <a href="library.html">
-                <img src="imgs/logo.png" id="logo">
-            </a>
-            <div class="logoutButton">
-                <a onclick="logout()" href="login.html">Logout</a>
-            </div>
-        </header>
-        <div id="libraryContainer">
-            <h2>Your Library</h2>
-            <div id="setsList"></div>
+
+<head>
+    <title>Library</title>
+    <link rel="icon" type="image/png" href="imgs/icon.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="libraryPage">
+    <header>
+        <a href="library.html">
+            <img src="imgs/logo.png" id="logo">
+        </a>
+        <div class="logoutButton">
+            <a onclick="logout()" href="login.html">Logout</a>
         </div>
-        <script src="js/library.js"></script>
-  </body>
+    </header>
+    <div class="dropdownContainer">
+        <button class="dropButton">&#9776;</button>
+        <div class="dropdownContent">
+            <a href="library.html">Library</a>
+            <a href="createCards.html">Create Cards</a>
+        </div>
+    </div>
+    <div id="libraryContainer">
+        <h2>Your Library</h2>
+        <div id="setsList"></div>
+    </div>
+    <script src="js/library.js"></script>
+</body>
+
 </html>
