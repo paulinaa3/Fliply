@@ -13,18 +13,18 @@
         <a href="library.html">
             <img src="imgs/logo.png" id="logo">
         </a>
-        <div class="dropdownContainer">
-            <button class="dropButton"><span>&#9776;</span></button>
-            <div class="dropdownContent">
-                <a href="library.html">Library</a>
-                <a href="createCards.html">Create Cards</a>
-                <a href="reviewCards.html">Review Cards</a>
-                <a href="#">Quiz Me</a>
-            </div>
+        <div class="logoutButton">
+            <a onclick="logout()" href="login.html">Logout</a>
         </div>
-
-
     </header>
+    <div class="dropdownContainer">
+        <button class="dropButton">&#9776;</button>
+        <div class="dropdownContent">
+            <a href="library.html">Library</a>
+            <a href="reviewCards.html">Review Cards</a>
+            <a href="practiceTest.html">Quiz Me</a>
+        </div>
+    </div>
     <div id="reviewContainer">
         <h1 id="pageTitle">Review Cards</h1>
         <h3 id="cardTitle"><span id="setName"></span><span id="cardCount"></span></h3>

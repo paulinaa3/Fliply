@@ -3,61 +3,65 @@ body {
     background-color: rgb(247, 247, 247);
     color: rgb(62, 62, 62);
     font-family: sans-serif;
- }
- 
- 
- img {
+}
+
+
+img {
     left: 0;
     top: 0;
     width: 70px;
- }
- 
- 
- @font-face {
+}
+
+
+@font-face {
     font-family: 'Bubble Body';
     src: url('../fonts/Bobbleboddy.ttf') format('truetype');
-  }
-
-  header {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   padding: 0 20px;
 }
 
-.logoutButton a{
-   text-decoration: none;
-   color: rgb(62, 62, 62);
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px 0 3px;
 }
- 
- 
- /* dropdown menu */
- .dropdownContainer {
+
+.logoutButton a {
+    text-decoration: none;
+    color: rgb(62, 62, 62);
+}
+
+
+/* dropdown menu */
+.dropdownContainer {
     float: left;
     margin-left: 5px;
+    margin-top: -40px;
     position: relative;
- }
- 
- 
- .dropButton {
+}
+
+
+.dropButton {
     position: absolute;
     top: 45px;
     font-size: 16px;
     border: none;
- }
- 
- 
- .dropdownContent {
+    color: rgb(62, 62, 62);
+    background-color: pink;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.dropdownContent {
     display: none;
     position: absolute;
     background-color: transparent;
     min-width: 135px;
     z-index: 1;
     margin-top: 85px;
- }
- 
- 
- .dropdownContent a {
+}
+
+.dropdownContent a {
     color: rgb(62, 62, 62);
     padding: 12px 16px;
     text-decoration: none;
@@ -66,23 +70,23 @@ body {
     background-color: white;
     margin: 10px 0;
     box-shadow: 0px 0px 8px #d9dde8;
- }
- 
- 
- .dropdownContent a:hover {
+}
+
+
+.dropdownContainer .dropdownContent a:hover {
     background-color: pink;
- }
- 
- 
- .dropdownContainer:hover .dropdownContent {
+}
+
+
+.dropdownContainer:hover .dropdownContent {
     display: block;
- }
- 
- 
- 
- 
- /* authpage css */
- .authPage #authBox {
+}
+
+
+
+
+/* authpage css */
+.authPage #authBox {
     background-color: white;
     position: absolute;
     left: 50%;
@@ -92,24 +96,24 @@ body {
     padding: 40px;
     border-radius: 12px;
     border: 1px solid rgb(224, 222, 222);
- }
- 
- 
- .authPage h2 {
+}
+
+
+.authPage h2 {
     text-align: center;
- }
- 
- 
- .authPage input {
+}
+
+
+.authPage input {
     margin-bottom: 10px;
     width: 100%;
     padding: 12px;
     border-radius: 5px;
     border: 0.5px solid rgb(191, 191, 191);
- }
- 
- 
- .authPage button {
+}
+
+
+.authPage button {
     color: rgb(62, 62, 62);
     margin-bottom: 5px;
     text-align: center;
@@ -119,68 +123,68 @@ body {
     border-radius: 20px;
     border: 0px;
     font-family: sans-serif;
- }
- 
- 
- .authPage button:hover {
+}
+
+
+.authPage button:hover {
     cursor: pointer;
     background-color: rgb(255, 179, 192);
- }
- 
- 
- #loginPage #registerBox {
+}
+
+
+#loginPage #registerBox {
     text-align: center;
- }
- 
- 
- #loginPage a {
+}
+
+
+#loginPage a {
     text-decoration: none;
- }
- 
- 
- .authPage .passwordContainer {
+}
+
+
+.authPage .passwordContainer {
     position: relative;
- }
- 
- 
- .authPage .passwordContainer .fa-eye {
+}
+
+
+.authPage .passwordContainer .fa-eye {
     position: absolute;
     right: 0;
     top: 40%;
     transform: translateY(-50%);
     cursor: pointer;
     color: rgb(180, 180, 180);
- }
- 
- 
- 
- 
- /* createCards css */
- .createCardsPage * {
+}
+
+
+
+
+/* createCards css */
+.createCardsPage * {
     box-sizing: border-box;
- }
- 
- 
- .createCardsPage #createCardsDiv {
+}
+
+
+.createCardsPage #createCardsDiv {
     margin: 10px 0;
     width: 100%;
- }
- 
- 
- .createCardsPage #createCardsContainer {
+}
+
+
+.createCardsPage #createCardsContainer {
     width: 80%;
     margin: auto;
- }
- 
- 
- .createCardsPage .cardSide {
+}
+
+
+.createCardsPage .cardSide {
     display: inline-block;
     width: 48.75%;
     vertical-align: top;
- }
- 
- 
- .createCardsPage .card {
+}
+
+
+.createCardsPage .card {
     background-color: white;
     padding: 40px 20px;
     border-radius: 10px;
@@ -191,38 +195,38 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 10px;
- }
- 
- 
- .createCardsPage .removeDiv {
+}
+
+
+.createCardsPage .removeDiv {
     vertical-align: top;
- }
- 
- 
- .createCardsPage .removeBtn {
+}
+
+
+.createCardsPage .removeBtn {
     background: none;
     border: none;
     padding: 0;
- }
- 
- 
- .createCardsPage .removeBtn:hover {
+}
+
+
+.createCardsPage .removeBtn:hover {
     background-color: transparent;
     cursor: pointer;
- }
- 
- 
- .createCardsPage .trashIcon {
+}
+
+
+.createCardsPage .trashIcon {
     width: 25px;
- }
- 
- 
- .createCardsPage .inputArea:focus {
+}
+
+
+.createCardsPage .inputArea:focus {
     background-color: white;
- }
- 
- 
- .createCardsPage .inputArea {
+}
+
+
+.createCardsPage .inputArea {
     padding: 8px;
     border-radius: 10px;
     border: 0px solid gray;
@@ -230,155 +234,155 @@ body {
     color: rgb(62, 62, 62);
     font-family: sans-serif;
     width: 100%;
- }
- 
- 
- .createCardsPage #setName {
+}
+
+
+.createCardsPage #setName {
     background-color: white;
     box-shadow: 0px 0px 8px #d9dde8;
     margin-bottom: 15px;
     width: 100%;
- }
- 
- 
- .createCardsPage .cardSide .inputArea {
+}
+
+
+.createCardsPage .cardSide .inputArea {
     border-radius: 5px;
     resize: none;
     box-sizing: border-box;
- }
- 
- 
- .createCardsPage .saveInactive {
+}
+
+
+.createCardsPage .saveInactive {
     background-color: gray;
     color: white
- }
- 
- 
- .createCardsPage .saveInactive:hover {
+}
+
+
+.createCardsPage .saveInactive:hover {
     background-color: gray;
- }
- 
- 
- .createCardsPage button,
- .createCardsPage .saveActive {
+}
+
+
+.createCardsPage button,
+.createCardsPage .saveActive {
     color: rgb(62, 62, 62);
     background-color: pink;
     border: 0;
     padding: 10px 20px;
     border-radius: 25px;
- }
- 
- 
- .createCardsPage #saveCards {
+}
+
+
+.createCardsPage #saveCards {
     padding: 5px 50px;
     vertical-align: middle;
- }
- 
- 
- .createCardsPage #saveCards {
+}
+
+
+.createCardsPage #saveCards {
     cursor: pointer;
- }
- 
- 
- .createCardsPage h1 {
+}
+
+
+.createCardsPage h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
- }
- 
- 
- .createCardsPage #addCard {
+}
+
+
+.createCardsPage #addCard {
     font-weight: bold;
     font-size: 24px;
     border-radius: 50%;
     color: white;
     padding: 10px 15px;
     width: 48px
- }
- 
- 
- .createCardsPage #addCard {
+}
+
+
+.createCardsPage #addCard {
     cursor: pointer;
- }
- 
- 
- 
- 
- @media (max-width: 600px) {
+}
+
+
+
+
+@media (max-width: 600px) {
     .createCardsPage .card {
         flex-direction: column;
         gap: 5px;
     }
- 
- 
+
+
     .createCardsPage .cardSide {
         width: 100%;
     }
- }
- 
- 
- /* reviewCards css */
- .reviewCardsPage * {
+}
+
+
+/* reviewCards css */
+.reviewCardsPage * {
     box-sizing: border-box;
- }
- 
- 
- .reviewCardsPage #reviewContainer {
+}
+
+
+.reviewCardsPage #reviewContainer {
     width: 60%;
     margin: auto;
     text-align: center;
- }
- 
- 
- .reviewCardsPage #pageTitle {
+}
+
+
+.reviewCardsPage #pageTitle {
     text-align: left;
- }
- 
- 
- .reviewCardsPage #cardTitle {
+}
+
+
+.reviewCardsPage #cardTitle {
     display: flex;
     justify-content: space-between;
- }
- 
- 
- 
- 
- .reviewCardsPage #cardCount {
+}
+
+
+
+
+.reviewCardsPage #cardCount {
     font-size: 15px;
- }
- 
- 
- 
- 
- .reviewCardsPage button {
+}
+
+
+
+
+.reviewCardsPage button {
     color: rgb(62, 62, 62);
     background-color: pink;
     border: 0;
     padding: 10px 20px;
     border-radius: 25px;
- }
- 
- 
- .reviewCardsPage button:hover {
+}
+
+
+.reviewCardsPage button:hover {
     cursor: pointer;
     background-color: rgb(253, 184, 196);
- }
- 
- 
- .reviewCardsPage #cardDisplay {
+}
+
+
+.reviewCardsPage #cardDisplay {
     width: 100%;
     margin: 20px auto;
     height: 450px;
     perspective: 1000px;
- }
- 
- 
- .reviewCardsPage #cardDisplay {
+}
+
+
+.reviewCardsPage #cardDisplay {
     cursor: pointer;
- }
- 
- 
- .reviewCardsPage #cardContainer {
+}
+
+
+.reviewCardsPage #cardContainer {
     position: relative;
     width: 100%;
     height: 100%;
@@ -386,45 +390,50 @@ body {
     transition: transform 1.0s;
     transform-style: preserve-3d;
     border-radius: 10px;
- }
- 
- 
- .reviewCardsPage #cardFront,
- .reviewCardsPage #cardBack {
+}
+
+
+.reviewCardsPage #cardFront,
+.reviewCardsPage #cardBack {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: white;
     font-size: 32px;
- 
- 
+
+
     display: flex;
     justify-content: center;
     align-items: center;
- 
- 
+
+
     /* Safari */
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 10px;
     box-shadow: 0px 0px 8px #d9dde8;
- }
- 
- 
- .reviewCardsPage #cardBack {
+}
+
+
+.reviewCardsPage #cardBack {
     transform: rotateX(180deg);
- }
- 
- 
- 
- 
- /*library css */
- #libraryPage h2 {
+}
+
+
+
+
+/*library css */
+#libraryPage #libraryContainer {
+    width: 88%;
+    margin: auto;
+}
+
+#libraryPage h2 {
     margin-left: 4%;
- }
- 
- 
- #libraryPage .cardBox {
+}
+
+
+#libraryPage .cardBox {
     background-color: white;
     padding: 8px;
     margin: 10px;
@@ -433,39 +442,39 @@ body {
     width: 90%;
     margin: 10px auto;
     margin-bottom: 15px;
- }
- 
- 
- #libraryPage .cardBox:hover {
+}
+
+
+#libraryPage .cardBox:hover {
     cursor: pointer;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
- 
- 
- }
- 
- 
- #libraryPage .cardRow {
+
+
+}
+
+
+#libraryPage .cardRow {
     display: flex;
     justify-content: space-between;
     align-items: center;
- }
- 
- 
- #libraryPage .buttonRow {
+}
+
+
+#libraryPage .buttonRow {
     display: flex;
     gap: 8px;
- }
- 
- 
- 
- 
- #libraryPage .cardRow p {
+}
+
+
+
+
+#libraryPage .cardRow p {
     font-size: 12px;
- }
- 
- 
- #libraryPage .cardRow button {
+}
+
+
+#libraryPage .cardRow button {
     font-size: 12px;
     color: rgb(62, 62, 62);
     padding: 5px;
@@ -474,17 +483,17 @@ body {
     border-radius: 20px;
     border: 0px;
     font-family: sans-serif;
- }
- 
- 
- #libraryPage .cardRow button:hover {
+}
+
+
+#libraryPage .cardRow button:hover {
     cursor: pointer;
     background-color: rgb(255, 179, 192);
- }
- 
- 
- /*practice test css*/ 
- #quizBody #loadingScreen {
+}
+
+
+/*practice test css*/
+#quizBody #loadingScreen {
     position: fixed;
     top: 0;
     right: 0;
@@ -496,24 +505,26 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 1000;
- }
- 
- 
- #quizBody #loadingScreen .container{
+}
+
+
+#quizBody #loadingScreen .container {
     height: 300px;
     width: 200px;
     background-color: rgb(247, 247, 247);
-    border: 5px solid  pink;;
+    border: 5px solid pink;
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
- }
- #quizBody #loadingScreen h4{
+}
+
+#quizBody #loadingScreen h4 {
     /* color: rgb(200, 107, 209); background-color: pink; */
     color: pink;
- }
- #quizBody .circle{
+}
+
+#quizBody .circle {
     margin: 7px auto;
     width: 40px;
     height: 40px;
@@ -522,30 +533,32 @@ body {
     /* //border-top-color: rgb(200, 107, 209); */
     border-top-color: pink;
     animation: spin 1s linear infinite;
- }
- 
- 
- @keyframes spin{
-    100%{
+}
+
+
+@keyframes spin {
+    100% {
         transform: rotate(360deg)
     }
- }
- 
- 
- #quizBody #quizArea {
- display: none;
- padding: 16px;
- }
- 
- 
- 
- 
- #quizBody #quizTitle h2{
+}
+
+
+#quizBody #quizContainer {
+    width: 80%;
+    margin: auto;
+}
+
+#quizBody #quizArea {
+    display: none;
+    /* padding: 16px; */
+}
+
+#quizBody #quizTitle h2 {
     margin-left: 4%;
- }
- 
- 
- #quizBody .quizButton {
+}
+
+
+#quizBody .quizButton {
     color: rgb(62, 62, 62);
     background-color: pink;
     border: 0px;
@@ -556,58 +569,58 @@ body {
     border-radius: 20px;
     font-size: 16px;
     cursor: pointer;
- }
- 
- 
- #quizBody .quizButton :hover {
-    cursor:pointer;
+}
+
+
+#quizBody .quizButton :hover {
+    cursor: pointer;
     background-color: rgb(255, 179, 192);
- }
- 
- 
- #quizBody .outerBox{
+}
+
+
+#quizBody .outerBox {
     background: white;
     border-radius: 20px;
     padding: 20px;
     margin-bottom: 25px;
     box-shadow: 0px 0px 8px #d9dde8;
-    width:90%;
+    /* width: 90%; */
     margin: 10px auto;
-    margin-bottom:20px;
- }
- 
- 
- #quizBody .outerBox:hover {
+    margin-bottom: 20px;
+}
+
+
+#quizBody .outerBox:hover {
     transform: translateY(-2px);
- }
- 
- 
- #quizBody .quizSpan {
+}
+
+
+#quizBody .quizSpan {
     font-family: sans-serif;
-    font-size:20px;
+    font-size: 20px;
     color: rgb(62, 62, 62);
- }
- 
- 
- #quizBody .question{
-    color:rgb(255, 179, 192);
+}
+
+
+#quizBody .question {
+    color: rgb(255, 179, 192);
     font-family: 'Bubble Body', sans-serif;
-    font-size:25px;
- }
- 
- 
- #quizBody .answer {
+    font-size: 25px;
+}
+
+
+#quizBody .answer {
     display: block;
     max-height: 0;
     opacity: 0;
     transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
     margin-top: 0;
     pointer-events: none;
- }
- 
- 
- #quizBody .outerBox.open .answer {
-    max-height: 800px; 
+}
+
+
+#quizBody .outerBox.open .answer {
+    max-height: 800px;
     opacity: 1;
     margin-top: 10px;
- } 
+}
