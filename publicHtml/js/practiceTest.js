@@ -126,7 +126,7 @@ function generatePrompt() {
 
     var prompt= "Generate "+noOfQuestions+" question answer pairs in asterisk separated format: "
     + "q1*ans1*q2*ans2*...*qN*ansN using given flashcards. Keep questions and answers short "
-    + "and only about the information given and make sure no * inside the answer itself and do not add '?' ("
+    + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed ("
 
     //[ { front: "Baba Yaga", back: "Witch-like forest spirit..." }, 
     // { front: "Koschei", back: "Deathless sorcerer..." },...]
