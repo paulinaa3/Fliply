@@ -16,7 +16,7 @@ const client = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-
+//takes user to review.html page
 const app = express();
 const publicHtml = path.join(__dirname, 'publicHtml');
 //severs everything from publicHtml folder
