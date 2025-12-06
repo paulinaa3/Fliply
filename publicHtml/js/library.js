@@ -44,8 +44,6 @@ function loadLibrary(userSets) {
         
         const cardDiv = document.createElement('div');
         cardDiv.className = "cardBox"
-
-        //sets card id and does a fetch to reviewCards page 
         cardDiv.addEventListener("click", () => setCard(userSets[i]._id, 'reviewCards.html'));
 
         const row = document.createElement('div');

@@ -1,5 +1,3 @@
-//this function call loadSet as soon as the page loads
-//When `loadSet()` finishes (it returns a promise), you get `cardSet`
 window.addEventListener("DOMContentLoaded", function () {
     loadSet().then(function (cardSet) {
         if (cardSet) {
@@ -35,9 +33,8 @@ function loadSet() {
 let cardNumber = 0;
 let cards = [];
 function loadCards(cardSet) {
-    //sets the page's title
     document.getElementById('setName').innerText = cardSet.name
-    cards = cardSet.cards //
+    cards = cardSet.cards
     updateDisplays()
 }
 
