@@ -117,16 +117,26 @@ function generatePrompt() {
     var noOfCards = cards.length
     var  chosenCards
     if (noOfCards>10){//pick 10 random cards
+        //chosenCards = getRandomCards()
         chosenCards = getRandomCards()
+        //noOfQuestions = 10
     }
     else {//6 cards = 6 questions
         chosenCards=cards
         noOfQuestions = noOfCards
     }
 
-    var prompt= "Generate "+noOfQuestions+" question answer pairs in asterisk separated format: "
-    + "q1*ans1*q2*ans2*...*qN*ansN using given flashcards. Keep questions and answers short "
-    + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed ("
+    var prompt= "Generate high-level "+noOfQuestions+" question answer pairs in asterisk separated format: "
+    + "q1*ans1*q2*ans2*...*qN*ansN drawing upon information in given flashcards. Keep questions and answers short "
+    + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed and do not "
+    +"literally write q6 but rather the actual 6th question ("
+
+
+    // var prompt= "Generate "+noOfQuestions+" question answer pairs in asterisk separated format: "
+    // + "q1*ans1*q2*ans2*...*qN*ansN using given flashcards. Keep questions and answers short "
+    // + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed ("
+
+
 
     //[ { front: "Baba Yaga", back: "Witch-like forest spirit..." }, 
     // { front: "Koschei", back: "Deathless sorcerer..." },...]
