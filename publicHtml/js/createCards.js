@@ -1,3 +1,8 @@
+// Author: David Herring, Paulina Aguirre, Eman Ayaz
+// File Name:createCards.js 
+// Purpose: This page handles the creation and editing of flashcard sets
+
+// loads the card set on page load if a set id stored in memory for editing, otherwise leaves the default creation setup in place
 window.addEventListener("DOMContentLoaded", function () {
     loadSet()
         .then(function (cardSet) {
@@ -92,6 +97,7 @@ function autoGrow(area) {
     area.style.height = area.scrollHeight + "px";
 }
 
+// updates save button to show Save or Saved depending on whether there are unsaved changes
 function setSaveBtn(shouldSave) {
     let btn = document.getElementById('saveCards')
     if (shouldSave) {
@@ -107,7 +113,7 @@ function setSaveBtn(shouldSave) {
     }
 }
 
-
+// helper to check if a card set id is stored in local memory
 function checkExist() {
     const setId = localStorage.getItem("setId")
     if (setId) {
@@ -118,7 +124,7 @@ function checkExist() {
     }
 }
 
-
+// saves cards to the database, which is the sole source of truth
 async function saveCards() {
     setSaveBtn(false)
     const obj = createObject();
@@ -139,6 +145,7 @@ async function saveCards() {
         })
 }
 
+// saves edited cards to the database
 async function editCards(setId) {
     setSaveBtn(false)
     const obj = createObject();
@@ -155,6 +162,7 @@ async function editCards(setId) {
     }
 }
 
+// creates the JSON containing the set information including the cards to send to the server
 function createObject() {
     let setName = document.getElementById('setName').value.trim()
     let cardFronts = document.getElementsByClassName('cardFront')
@@ -178,6 +186,7 @@ function createObject() {
     return obj
 }
 
+// helper to load a set from memory if the set is being edited
 function loadSet() {
     const setId = localStorage.getItem("setId");
     const url = "/set?setId=" + setId;
