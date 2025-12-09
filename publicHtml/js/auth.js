@@ -1,3 +1,8 @@
+// Author:Eman Ayaz,David Herring, Paulina Aguirre
+// File Name:auth.js 
+// Purpose: This code handles the authentication of users for the login/register pages as well
+//   as showing the correct output messages to the user
+
 function passwordToggle() {
     const showPassword = document.getElementById('showPassword')
     const passwordField = document.getElementById('password')

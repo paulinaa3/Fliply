@@ -1,3 +1,9 @@
+// Author:Eman Ayaz,David Herring, Paulina Aguirre
+// File Name:server.js 
+// Purpose: This code provides the backend express server that is responsible for serving the web pages,
+//   handling user authentication, retrieving and updating flashcards and helping with generating the practice Test 
+//   page through API calls to the AI
+
 require("dotenv").config();
 
 

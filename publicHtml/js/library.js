@@ -1,3 +1,8 @@
+// Author:Eman Ayaz,David Herring, Paulina Aguirre
+// File Name:library.js 
+// Purpose: This code handles dynamic population of a user's library and allows the
+//  user to interact with it
+
 window.addEventListener("DOMContentLoaded", function () {
   sendReq();
   localStorage.removeItem("setId");

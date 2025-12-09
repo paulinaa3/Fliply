@@ -1,6 +1,7 @@
 // Author:Eman Ayaz,David Herring, Paulina Aguirre
 // File Name:practiceTest.js 
-// Purpose: This page handles the dynamic creation for the practice test using javascript
+// Purpose: This code handles the dynamic creation of the practice test by generating
+// questions and answerss by utilizing API calls to AI
 
 let array
 let cards = [];
