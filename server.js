@@ -188,14 +188,20 @@ app.post("/api/generateQuiz", express.json(), async (req, res) => {
 
 
 
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 5000,
 })
     .then(() => {
-        app.listen(8080, () => {
-            console.log("Running...");
+        console.log("Connected to MongoDB");
+
+        // Start server after DB connection
+        const port = process.env.PORT || 8080;
+        app.listen(port, () => {
+            console.log(`Server running on port ${port}`);
         });
     })
     .catch((err) => {
-        console.error(err);
+        console.error("MongoDB connection error:", err);
     });
+
