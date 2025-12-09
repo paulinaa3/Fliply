@@ -54,9 +54,10 @@ async function sendRequest() {
         return
     }
 
+    
     //AI returns Questions and Answers seperated by asterisks
     array = output.split('*')
-   
+    console.log(array)
     //create required questions
     createQuestions(noOfQuestions);
 
@@ -111,11 +112,11 @@ function generatePrompt() {
         chosenCards=cards
         noOfQuestions = noOfCards
     }
-
-    let prompt= "Generate high-level "+noOfQuestions+" question answer pairs in asterisk separated format: "
-    + "q1*ans1*q2*ans2*...*qN*ansN drawing upon information in given flashcards. Keep questions and answers short "
+    
+    let prompt= "Generate exactly  "+noOfQuestions+" high-level question answer pairs in asterisk separated format: "
+    + "question1*answer1*question2*answer2*...*questionN*answerN drawing upon information in given flashcards. Keep questions and answers short "
     + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed and do not "
-    +"literally write q6 but rather the actual 6th question ("
+    +" include labels like q6 but rather give actual 6th question ("
 
 
     // format is like
