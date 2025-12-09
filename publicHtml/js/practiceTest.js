@@ -57,7 +57,8 @@ async function sendRequest() {
     
     //AI returns Questions and Answers seperated by asterisks
     array = output.split('*')
-    console.log(array)
+    //console.log(array) //for testing
+
     //create required questions
     createQuestions(noOfQuestions);
 
