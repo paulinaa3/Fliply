@@ -19,7 +19,7 @@ async function sendRequest() {
     quizArea.style.display = 'none';
 
     //get the cardSet from the backend
-    var cardSet = await loadSet();
+    let cardSet = await loadSet();
     if (!cardSet) {
         console.log("Card Set was not found");
         return;
@@ -102,8 +102,8 @@ function loadSet() {
 //  each flashcard that will be used for the test generation'
 //  return: a string 
 function generatePrompt() {
-    var noOfCards = cards.length
-    var  chosenCards
+    let noOfCards = cards.length
+    let  chosenCards
     if (noOfCards>10){//pick 10 random cards
         chosenCards = getRandomCards()
     }
@@ -112,7 +112,7 @@ function generatePrompt() {
         noOfQuestions = noOfCards
     }
 
-    var prompt= "Generate high-level "+noOfQuestions+" question answer pairs in asterisk separated format: "
+    let prompt= "Generate high-level "+noOfQuestions+" question answer pairs in asterisk separated format: "
     + "q1*ans1*q2*ans2*...*qN*ansN drawing upon information in given flashcards. Keep questions and answers short "
     + "and only about the information given and make sure no * inside the answer itself and add '?' at the end if needed and do not "
     +"literally write q6 but rather the actual 6th question ("
@@ -121,7 +121,7 @@ function generatePrompt() {
     // format is like
     //[ { front: "Baba Yaga", back: "Witch-like forest spirit..." }, 
     // { front: "Koschei", back: "Deathless sorcerer..." },...]
-    for (var i=0;i<chosenCards.length;i++){
+    for (let i=0;i<chosenCards.length;i++){
         prompt += "Flipcard "+(i+1)+" Front:" + chosenCards[i].front + " Back:" + chosenCards[i].back + ". "
     }
     prompt +=")"
@@ -134,9 +134,9 @@ function generatePrompt() {
 //This function picks 10 cards at random from the card deck
 //  return: 10 selected cards
 function getRandomCards() {
-    var chosenCards=[];
+    let chosenCards=[];
     while(chosenCards.length<10){
-       var i = Math.floor(Math.random() * cards.length); // for 11 cards: 0–10
+       let i = Math.floor(Math.random() * cards.length); // for 11 cards: 0–10
        if (!chosenCards.includes(cards[i])){//so we pick unique cards
         chosenCards.push(cards[i])
        }
@@ -154,13 +154,13 @@ function createQuestions(n) {
     let body = document.getElementById('quizContainer')
     let idTracker = 1
     let qTracker = 1
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         //create outer box to hold Q & Ans
-        var enclosingBox = document.createElement('div')
+        let enclosingBox = document.createElement('div')
         enclosingBox.setAttribute('class', "outerBox")
 
         //create division element for question
-        var divQ = document.createElement('div')
+        let divQ = document.createElement('div')
         divQ.innerText = "Q" + qTracker + ": "
         qTracker += 1
         divQ.setAttribute('class', "question")
