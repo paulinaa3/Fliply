@@ -1,6 +1,6 @@
 // Author: David Herring, Paulina Aguirre, Eman Ayaz
 // File Name:createCards.js 
-// Purpose: This page handles the creation and editing of flashcard sets
+// Purpose: This code handles the creation and editing of flashcard sets
 
 // loads the card set on page load if a set id stored in memory for editing, otherwise leaves the default creation setup in place
 window.addEventListener("DOMContentLoaded", function () {

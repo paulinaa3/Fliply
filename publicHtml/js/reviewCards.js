@@ -1,6 +1,6 @@
 // Author: David Herring, Paulina Aguirre, Eman Ayaz
 // File Name:reviewCards.js 
-// Purpose: This page handles the display of flashcards and navigation with in the flashcard set
+// Purpose: This code handles the display of flashcards and navigation with in the flashcard set
 
 // loads the card set on page load based on the set id stored in memory
 window.addEventListener("DOMContentLoaded", function () {
