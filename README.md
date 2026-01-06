@@ -1,5 +1,6 @@
 # Fliply
 **Live Demo:** https://fliply.onrender.com/
+
 Fliply is a full-stack web application that lets users create, study, and quiz themselves on flashcards they’ve built. It supports authenticated users, persists data with MongoDB, and includes a quiz mode that can generate practice exams from a user’s flashcard content using an external AI API.
 
 ## Architecture
